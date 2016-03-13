@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <title>Sensdu</title>
+    <link href="css/angular-bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-app="sensduRest">
+<div class="container">
+    <h1></h1>
+    <div ng-controller="jscontroller" ng-cloak class="ng-cloak">
+        <h1>{{greeting.translation}}</h1>
+    </div>
+</div>
+<script src="js/angular-bootstrap.js" type="text/javascript"></script>
+<script src="js/sensduRetriever.js"></script>
+</body>
+</html>
