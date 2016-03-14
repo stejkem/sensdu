@@ -1,6 +1,7 @@
 angular.module('sensduRest', [])
-  .controller('jscontroller', function($scope, $http) {
+  .controller('jscontroller', function($http) {
+  var self = this;
   $http.get('/resource/').success(function(data) {
-    $scope.greeting = data;
+    self.greeting = data;
   })
 });
