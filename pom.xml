@@ -7,6 +7,7 @@
     <groupId>com.sensdu</groupId>
     <artifactId>sensdu</artifactId>
     <version>0.1</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -51,13 +52,13 @@
 
     <repositories>
         <repository>
-            <vectorOfTranslation>spring-releases</vectorOfTranslation>
+            <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <vectorOfTranslation>spring-releases</vectorOfTranslation>
+            <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
