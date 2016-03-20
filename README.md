@@ -1,2 +1,2 @@
 # sensdu
-Sense-for-sense translator powered by Wikipedia.
+Sense-for-sense translation powered by Wikipedia.

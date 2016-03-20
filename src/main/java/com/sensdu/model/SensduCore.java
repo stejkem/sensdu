@@ -1,4 +1,4 @@
-package model;
+package com.sensdu.model;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
@@ -11,14 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by stejkem on 13/03/2016.
- */
 public class SensduCore {
-    /**
-     * @param word the word that should be translated
-     * @return sense-for-sense translation from Wiki
-     */
+
     public String getTranslation(String word, String translationRequest) throws Exception{
         VectorOfTranslation vot = new VectorOfTranslation(translationRequest);
         URL requestToWiki = requestToWikipediaBuilder(word, vot);
@@ -52,7 +46,6 @@ public class SensduCore {
         request.append(".wikipedia.org/w/api.php?action=query&titles=");
         request.append(word.replaceAll("\\s+","%20"));
         request.append("&prop=langlinks&formatversion=2&lllimit=500&format=json");
-
         return new URL(request.toString());
     }
 
