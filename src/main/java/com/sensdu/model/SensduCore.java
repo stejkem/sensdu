@@ -13,9 +13,36 @@ import java.util.Map;
 
 public class SensduCore {
 
-    public String getTranslation(String word, String translationRequest) throws Exception{
-        VectorOfTranslation vot = new VectorOfTranslation(translationRequest);
-        URL requestToWiki = requestToWikipediaBuilder(word, vot);
+    private String sourceWord;
+    private String vectorOfTranslation;
+    private String translation;
+
+    public SensduCore() { }
+
+    public SensduCore(String sourceWord, String vectorOfTranslation) {
+        this.sourceWord = sourceWord;
+        this.vectorOfTranslation = vectorOfTranslation;
+    }
+
+    public String getSourceWord() {
+        return sourceWord;
+    }
+
+    public void setSourceWord(String sourceWord) {
+        this.sourceWord = sourceWord;
+    }
+
+    public String getVectorOfTranslation() {
+        return vectorOfTranslation;
+    }
+
+    public void setVectorOfTranslation(String vectorOfTranslation) {
+        this.vectorOfTranslation = vectorOfTranslation;
+    }
+
+    public String getTranslation() throws Exception{
+        VectorOfTranslation vot = new VectorOfTranslation(vectorOfTranslation);
+        URL requestToWiki = requestToWikipediaBuilder(sourceWord, vot);
 
         BufferedReader in = new BufferedReader(new InputStreamReader(requestToWiki.openStream()));
         StringBuilder answerFromWebSite = new StringBuilder();

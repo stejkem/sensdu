@@ -9,9 +9,8 @@ public class SensduCoreTest {
 
     @org.junit.Test
     public void testGetTranslation() throws Exception {
-        SensduCore sensduCore = new SensduCore();
-        assertEquals("Myky", sensduCore.getTranslation("Dumpling", "en2fi"));
-        assertEquals("Метрополітен", sensduCore.getTranslation("Rapid transit", "en2uk"));
+        assertEquals("Myky", new SensduCore("Dumpling", "en2fi").getTranslation());
+        assertEquals("Метрополітен", new SensduCore("Rapid transit", "en2uk").getTranslation());
 
     }
 }

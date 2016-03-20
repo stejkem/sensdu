@@ -16,4 +16,5 @@ class VectorOfTranslation {
     String getToLanguage() {
         return toLanguage;
     }
+
 }
