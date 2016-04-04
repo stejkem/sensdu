@@ -74,11 +74,10 @@
             <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
             <build>
-                <finalName>{APP_NAME}</finalName>
+                <finalName>sensdu</finalName>
                 <plugins>
                     <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <artifactId>maven-war-plugin </artifactId>
                         <configuration>
                             <outputDirectory>webapps</outputDirectory>
                         </configuration>
