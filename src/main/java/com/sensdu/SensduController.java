@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class SensduController {
-    @RequestMapping(value="/", method=RequestMethod.GET)
+    @RequestMapping(value="/app", method=RequestMethod.GET)
     public String tranlsationForm(Model model) {
         model.addAttribute("sensduCore", new SensduCore());
         return "home";
     }
 
-    @RequestMapping(value="/", method=RequestMethod.POST)
+    @RequestMapping(value="/app", method=RequestMethod.POST)
     public String translationSubmitted(@ModelAttribute SensduCore sensduCore, Model model) {
         model.addAttribute("sensduCore", sensduCore);
         return "result";
