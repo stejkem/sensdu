@@ -13,13 +13,13 @@ public class SensduController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String tranlsationForm(Model model) {
         model.addAttribute("sensduCore", new SensduCore());
-        return "home";
+        return "input";
     }
 
     @RequestMapping(value="/", method=RequestMethod.POST)
     public String translationSubmitted(@ModelAttribute SensduCore sensduCore, Model model) {
         model.addAttribute("sensduCore", sensduCore);
-        return "result";
+        return "output";
     }
 
 }
