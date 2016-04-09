@@ -1,4 +1,4 @@
-package com.sensdu.model;
+package com.sensdu.core;
 
 import static org.junit.Assert.*;
 

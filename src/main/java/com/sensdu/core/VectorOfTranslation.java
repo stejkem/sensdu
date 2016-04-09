@@ -1,4 +1,4 @@
-package com.sensdu.model;
+package com.sensdu.core;
 
 class VectorOfTranslation {
     private String fromLanguage;

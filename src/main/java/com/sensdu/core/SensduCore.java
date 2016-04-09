@@ -1,4 +1,4 @@
-package com.sensdu.model;
+package com.sensdu.core;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
