@@ -22,4 +22,9 @@ public class SensduController {
         return "output";
     }
 
+    @RequestMapping(value="/error", method=RequestMethod.GET)
+    public String errorHandling() {
+        return "error";
+    }
+
 }
