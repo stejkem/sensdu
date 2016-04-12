@@ -72,6 +72,7 @@ public class SensduCore {
         request.append(vot.getFromLanguage());
         request.append(".wikipedia.org/w/api.php?action=query&titles=");
         request.append(word.replaceAll("\\s+","%20"));
+        request.append("&redirects"); //added to check not only direct queries but also redirects
         request.append("&prop=langlinks&formatversion=2&lllimit=500&format=json");
         return new URL(request.toString());
     }
