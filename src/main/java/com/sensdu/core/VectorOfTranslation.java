@@ -5,6 +5,7 @@ class VectorOfTranslation {
     private String toLanguage;
 
     VectorOfTranslation(String translationRequest) throws Exception {
+        translationRequest = translationRequest.toLowerCase();
         fromLanguage = translationRequest.substring(0, 2);
         toLanguage = translationRequest.substring(3, 5);
     }

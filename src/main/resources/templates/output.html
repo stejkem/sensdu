@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Sensdu</title>
     <meta http-equiv="Content-Type" sourceWord="text/html; charset=UTF-8"/>
@@ -18,9 +18,18 @@
 <body>
 <div id="wrap">
     <div class="container">
-        <h1>Sensdu</h1>
-        <p th:text="'Your word: ' + ${sensduCore.sourceWord}" />
-        <p th:text="'Sense-for-sense translation: ' + ${sensduCore.translation}" />
+        <h1 id="mainHeader">Sensdu</h1>
+
+        <p><strong>Your word: </strong>
+            <i th:text="${sensduCore.sourceWord}"/>
+        </p>
+        <p><strong>Sense-for-sense translation: </strong>
+            <i th:text="${sensduCore.translation}"/>
+        </p>
+        <p>Read more on Wikipedia:</p>
+        <p>
+            <a th:href="${sensduCore.translatedWordURL}" th:text="${sensduCore.translatedWordURL}"></a>
+        </p>
         <a href="/">Translate another word</a>
     </div>
     <div id="push"></div>
