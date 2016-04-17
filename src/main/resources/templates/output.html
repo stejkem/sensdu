@@ -19,8 +19,8 @@
 <div id="wrap">
     <div class="container">
         <h1>Sensdu</h1>
-        <p>Sense-for-sense translation: </p>
-        <strong><p th:text="${sensduCore.translation}" /></strong>
+        <p th:text="'Your word: ' + ${sensduCore.sourceWord}" />
+        <p th:text="'Sense-for-sense translation: ' + ${sensduCore.translation}" />
         <a href="/">Translate another word</a>
     </div>
     <div id="push"></div>

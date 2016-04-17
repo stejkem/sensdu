@@ -29,6 +29,8 @@ public class SensduCore {
     }
 
     public void setSourceWord(String sourceWord) {
+        sourceWord = sourceWord.toLowerCase();
+        sourceWord = sourceWord.substring(0, 1).toUpperCase() + sourceWord.substring(1);
         this.sourceWord = sourceWord;
     }
 
