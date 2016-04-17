@@ -16,6 +16,7 @@ public class SensduCore {
     private String sourceWord;
     private String vectorOfTranslation;
     private String translation;
+    private String translatedWordURL;
 
     public SensduCore() { }
 
@@ -64,7 +65,7 @@ public class SensduCore {
         while (langsKeyIter.hasNext() && wordValuesIter.hasNext()) {
             langsAndWords.put(langsKeyIter.next(), wordValuesIter.next());
         }
-
+        
         return langsAndWords.get(vot.getToLanguage());
     }
 
