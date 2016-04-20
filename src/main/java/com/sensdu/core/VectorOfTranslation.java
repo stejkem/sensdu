@@ -5,10 +5,10 @@ class VectorOfTranslation {
     private String toLanguage;
 
     VectorOfTranslation(String translationRequest) throws Exception {
+        translationRequest = translationRequest.toLowerCase();
         if (!translationRequest.substring(0,1).matches("\\w+")) {
             translationRequest = VOTMap.ALIASES.get(translationRequest);
         }
-        translationRequest = translationRequest.toLowerCase();
         fromLanguage = translationRequest.substring(0, 2);
         toLanguage = translationRequest.substring(3, 5);
 
