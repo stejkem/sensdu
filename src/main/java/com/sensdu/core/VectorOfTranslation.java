@@ -1,10 +1,10 @@
 package com.sensdu.core;
 
-class VectorOfTranslation {
+public class VectorOfTranslation {
     private String fromLanguage;
     private String toLanguage;
 
-    VectorOfTranslation(String translationRequest) throws Exception {
+    public VectorOfTranslation(String translationRequest) throws Exception {
         translationRequest = translationRequest.toLowerCase();
         if (!translationRequest.substring(0,1).matches("\\w+")) {
             translationRequest = VOTMap.ALIASES.get(translationRequest);
@@ -14,11 +14,11 @@ class VectorOfTranslation {
 
     }
 
-    String getFromLanguage() {
+    public String getFromLanguage() {
         return fromLanguage;
     }
 
-    String getToLanguage() {
+    public String getToLanguage() {
         return toLanguage;
     }
 

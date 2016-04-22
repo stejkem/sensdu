@@ -1,9 +1,9 @@
 package com.sensdu.core;
 
-class WordAndURLTuple {
+public class WordAndURLTuple {
 
-    String word;
-    String URL;
+    private String word;
+    private String URL;
 
     public WordAndURLTuple(String word, String URL) {
         this.word = word;

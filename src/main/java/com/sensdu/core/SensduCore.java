@@ -2,6 +2,7 @@ package com.sensdu.core;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.sensdu.requesters.LangLinksRequester;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -14,6 +15,7 @@ import java.util.Map;
 public class SensduCore {
 
     private String sourceWord;
+    private List<String> sourceWordSearchSuggestion;
     private String vectorOfTranslation;
     private String translation;
     private String translatedWordURL;
@@ -44,72 +46,11 @@ public class SensduCore {
     }
 
     public String getTranslation() throws Exception{
-        VectorOfTranslation vot = new VectorOfTranslation(vectorOfTranslation);
-        URL requestToWiki = requestToWikipediaBuilder(sourceWord, vot);
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(requestToWiki.openStream()));
-        StringBuilder answerFromWebSite = new StringBuilder();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            answerFromWebSite.append(inputLine);
-        }
-
-        Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
-        List<String> langsKey = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].lang");
-        List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
-        List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
-
-        Map<String, WordAndURLTuple> langsAndWords = new HashMap<>();
-
-        Iterator<String> langsKeyIter = langsKey.iterator();
-        Iterator<String> wordValuesIter = wordValues.iterator();
-        Iterator<String> wordURLsIter = urlValues.iterator();
-
-        while (langsKeyIter.hasNext() && wordValuesIter.hasNext() && wordURLsIter.hasNext()) {
-            langsAndWords.put(langsKeyIter.next(), new WordAndURLTuple(wordValuesIter.next(), wordURLsIter.next()));
-        }
-        
-        return langsAndWords.get(vot.getToLanguage()).getWord();
+        return new LangLinksRequester(sourceWord, vectorOfTranslation).getWordTranslation();
     }
 
     public String getTranslatedWordURL() throws Exception{
-        VectorOfTranslation vot = new VectorOfTranslation(vectorOfTranslation);
-        URL requestToWiki = requestToWikipediaBuilder(sourceWord, vot);
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(requestToWiki.openStream()));
-        StringBuilder answerFromWebSite = new StringBuilder();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            answerFromWebSite.append(inputLine);
-        }
-
-        Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
-        List<String> langsKey = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].lang");
-        List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
-        List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
-
-        Map<String, WordAndURLTuple> langsAndWords = new HashMap<>();
-
-        Iterator<String> langsKeyIter = langsKey.iterator();
-        Iterator<String> wordValuesIter = wordValues.iterator();
-        Iterator<String> wordURLsIter = urlValues.iterator();
-
-        while (langsKeyIter.hasNext() && wordValuesIter.hasNext() && wordURLsIter.hasNext()) {
-            langsAndWords.put(langsKeyIter.next(), new WordAndURLTuple(wordValuesIter.next(), wordURLsIter.next()));
-        }
-
-        return langsAndWords.get(vot.getToLanguage()).getURL();
-    }
-
-    private URL requestToWikipediaBuilder(String word, VectorOfTranslation vot) throws Exception {
-        StringBuilder request = new StringBuilder();
-        request.append("https://");
-        request.append(vot.getFromLanguage());
-        request.append(".wikipedia.org/w/api.php?action=query&titles=");
-        request.append(word.replaceAll("\\s+","%20"));
-        request.append("&redirects"); //added to check not only direct queries but also redirects
-        request.append("&prop=langlinks&formatversion=2&lllimit=500&format=json&llprop=url");
-        return new URL(request.toString());
+        return new LangLinksRequester(sourceWord, vectorOfTranslation).getURLOfTranlatedWord();
     }
 
 }
