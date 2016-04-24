@@ -1,30 +1,22 @@
 package com.sensdu.core;
 
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.JsonPath;
 import com.sensdu.requesters.LangLinksRequester;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class SensduCore {
-
+    private String fromLanguage;
+    private String toLanguage;
     private String sourceWord;
     private List<String> sourceWordSearchSuggestion;
-    private String vectorOfTranslation;
-    private String translation;
+    private String translatedWord;
     private String translatedWordURL;
 
     public SensduCore() { }
 
-    public SensduCore(String sourceWord, String vectorOfTranslation) {
-        this.sourceWord = sourceWord;
-        this.vectorOfTranslation = vectorOfTranslation;
+    public SensduCore(String sourceWord, String fromLanguage, String toLanguage) {
+        this.sourceWord = sourceWord.toLowerCase();
+        this.fromLanguage = fromLanguage.toLowerCase();
+        this.toLanguage = toLanguage.toLowerCase();
     }
 
     public String getSourceWord() {
@@ -32,25 +24,32 @@ public class SensduCore {
     }
 
     public void setSourceWord(String sourceWord) {
-        sourceWord = sourceWord.toLowerCase();
-        sourceWord = sourceWord.substring(0, 1).toUpperCase() + sourceWord.substring(1);
-        this.sourceWord = sourceWord;
+        this.sourceWord =  sourceWord.substring(0, 1).toUpperCase() + sourceWord.toLowerCase().substring(1);
+
     }
 
-    public String getVectorOfTranslation() {
-        return vectorOfTranslation;
+    public void setFromLanguage(String fromLanguage) {
+        this.fromLanguage = fromLanguage.toLowerCase();
     }
 
-    public void setVectorOfTranslation(String vectorOfTranslation) {
-        this.vectorOfTranslation = vectorOfTranslation;
+    public String getFromLanguage() {
+        return fromLanguage;
     }
 
-    public String getTranslation() throws Exception{
-        return new LangLinksRequester(sourceWord, vectorOfTranslation).getWordTranslation();
+    public void setToLanguage(String toLanguage) {
+        this.toLanguage = toLanguage.toLowerCase();
+    }
+
+    public String getToLanguage() {
+        return toLanguage;
+    }
+
+    public String getTranslatedWord() throws Exception{
+        return new LangLinksRequester(sourceWord, fromLanguage, toLanguage).getWordTranslation();
     }
 
     public String getTranslatedWordURL() throws Exception{
-        return new LangLinksRequester(sourceWord, vectorOfTranslation).getURLOfTranlatedWord();
+        return new LangLinksRequester(sourceWord, fromLanguage, toLanguage).getURLOfTranlatedWord();
     }
 
 }

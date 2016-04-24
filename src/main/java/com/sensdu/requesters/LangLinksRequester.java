@@ -2,7 +2,6 @@ package com.sensdu.requesters;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
-import com.sensdu.core.VectorOfTranslation;
 import com.sensdu.core.WordAndURLTuple;
 
 import java.io.BufferedReader;
@@ -17,21 +16,23 @@ public class LangLinksRequester implements Requester {
 
     private Map<String, WordAndURLTuple> langsAndWords;
     private String word;
-    private VectorOfTranslation vot;
+    private String toLanguage;
+    private String fromLanguage;
 
-    public LangLinksRequester(String word, String vectorOfTranslation) throws Exception {
+    public LangLinksRequester(String word, String fromLanguage, String toLanguage) throws Exception {
         langsAndWords = new HashMap<>();
         this.word = word;
-        this.vot = new VectorOfTranslation(vectorOfTranslation);
+        this.fromLanguage = fromLanguage;
+        this.toLanguage = toLanguage;
         fillInLangsAndWordMap();
     }
 
     public String getWordTranslation() {
-        return langsAndWords.get(vot.getToLanguage()).getWord();
+        return langsAndWords.get(toLanguage).getWord();
     }
 
     public String getURLOfTranlatedWord() {
-        return langsAndWords.get(vot.getToLanguage()).getURL();
+        return langsAndWords.get(toLanguage).getURL();
     }
 
     private void fillInLangsAndWordMap() throws Exception {
@@ -63,7 +64,7 @@ public class LangLinksRequester implements Requester {
     private URL URLBuilder() throws Exception {
         StringBuilder request = new StringBuilder();
         request.append("https://");
-        request.append(vot.getFromLanguage());
+        request.append(fromLanguage);
         request.append(".wikipedia.org/w/api.php?action=query&titles=");
         request.append(word.replaceAll("\\s+","%20"));
         request.append("&redirects"); //added to check not only direct queries but also redirects
