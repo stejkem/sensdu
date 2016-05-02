@@ -18,4 +18,3 @@ public class SensduApplication extends SpringBootServletInitializer {
         SpringApplication.run(SensduApplication.class, args);
     }
 }
-
