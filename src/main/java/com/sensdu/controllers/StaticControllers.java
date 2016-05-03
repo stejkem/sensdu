@@ -12,7 +12,7 @@ public class StaticControllers {
         }
 
         @RequestMapping(value="/output")
-        public String output() {
+            public String output() {
             return "views/output.html";
         }
 

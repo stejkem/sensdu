@@ -7,12 +7,15 @@ angular.module('sensduFrontEnd', [])
         });
  })
 
-  .controller('input', function($http, $location) {
+
+
+  .controller('input', function($http) {
   var self = this;
   self.submitForm = function() {
-      $http.get('/resource').then(function(response) {
+      $http.post('/resource', self.sensdu).then(function(response) {
             self.sensdu = response.data;
-            $location.path("/output");
+            window.location.href = '/output';
       })
   }
   });
+
