@@ -1,5 +1,5 @@
 <form role="form" name="mainInput" id="mainInput"
-      ng-submit="submitForm()" onreset="resetHandler()" method="post">
+      ng-submit="formSubmit()"  method="post">
     <!--<table border="0" style="width:100%">-->
         <!--<tr>-->
             <!--<td id="fromLanguageGroup">-->
@@ -73,6 +73,6 @@
 
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success">Translate</button>
     <input type="reset" uib-btn-radio="Reset" class="btn btn-danger" onclick="reset()"/>
 </form>

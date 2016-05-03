@@ -13,30 +13,34 @@
     </style>
 </head>
 
-<body ng-app="sensduFrontEnd">
+<body ng-app="routerApp" ng-controller="mainController">
 
-<div id="wrap">
-    <div class="container">
-        <h1 id="mainHeader">Sensdu</h1>
-        <div ui-view class="container"></div>
+    <div id="wrap">
+        <div class="container">
+            <h1 id="mainHeader">Sensdu</h1>
+
+            <!--The content will be injected here-->
+            <div ui-view></div>
+
+        </div>
+
+        <div id="push"></div>
+
     </div>
 
-    <div id="push"></div>
-</div>
-
-<div id="footer">
-    <div class="container">
-        <p class="=muted credit">
-            Sensdu - sensum de sensu (sense-for-sense) translation powered by Wikipedia.
-        </p>
+    <div id="footer">
+        <div class="container">
+            <p class="=muted credit">
+                Sensdu - sensum de sensu (sense-for-sense) translation powered by Wikipedia.
+            </p>
+        </div>
     </div>
-</div>
 
-<script src="js/angular-bootstrap.js" type="text/javascript"></script>
-<script src="js/sensduFrontEndApp.js"></script>
-<script src="js/router.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="js/validator.js" type="text/javascript"></script>
+    <script src="js/angular-bootstrap.js" type="text/javascript"></script>
+    <script src="js/routerApp.js"></script>
+    <script src="js/router.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/validator.js" type="text/javascript"></script>
 
 </body>
 
