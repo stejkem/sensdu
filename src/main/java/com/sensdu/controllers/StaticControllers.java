@@ -11,10 +11,10 @@ public class StaticControllers {
 //            return "index.html";
 //        }
 
-        @RequestMapping(value="/output")
-            public String output() {
-            return "index.html";
-        }
+//        @RequestMapping(value="/output")
+//            public String output() {
+//            return "index.html";
+//        }
 
 
 }

@@ -12,7 +12,7 @@ public class ResourceController {
     @RequestMapping(value="/resource")
     public @ResponseBody Map<String,Object> setData(@RequestBody SensduCore sensdu) throws Exception {
         Map<String, Object> model = new HashMap<>();
-        model.put("sourceWord", sensdu.getSourceWord());
+        model.put("word", sensdu.getSourceWord());
         model.put("translatedWord", sensdu.getTranslatedWord());
         model.put("translatedWordURL", sensdu.getTranslatedWordURL());
         return model;

@@ -2,29 +2,29 @@
 
    routerApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-       $urlRouterProvider.otherwise('/input');
-       $stateProvider
-           .state('input', {
-               url: '/input',
-               templateUrl: 'input.html'
-           })
-           .state('output', {
-               url: '/output',
-               templateUrl: 'output.html'
-           });
+              $urlRouterProvider.otherwise('/input');
+              $stateProvider
+                  .state('input', {
+                      url: '/',
+                      templateUrl: 'input.html',
+                      controller: 'inputController'
+                  })
+                  .state('output', {
+                      url: '/',
+                      templateUrl: 'output.html'
+                  });
 
-           $locationProvider.html5Mode({
-                 enabled: true,
-                 requireBase: false
-           });
-   })
+                  $locationProvider.html5Mode({
+                        enabled: true,
+                        requireBase: false
+                  });
+    })
 
- .controller('mainController', function($http, $state) {
-         var self = this;
-         self.formSubmit = function() {
-             $http.post('/resource', self.sensdu).then(function(response) {
-                   self.sensdu = response.data;
+   .controller('inputController', function($scope, $rootScope, $http, $state) {
+         $scope.formSubmit = function() {
+             $http.post('/resource', $scope.sensdu).then(function(response) {
+                   $rootScope.sensdu = response.data;
                    $state.go('output');
              })
          }
- });
+   });
