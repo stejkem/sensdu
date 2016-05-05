@@ -4,9 +4,11 @@ import com.sensdu.requesters.LangLinksRequester;
 import java.util.List;
 
 public class SensduCore {
+
     private String fromLanguage;
     private String toLanguage;
     private String sourceWord;
+    private String sourceWordlURL;
     private List<String> sourceWordSearchSuggestion;
     private String translatedWord;
     private String translatedWordURL;
@@ -26,6 +28,10 @@ public class SensduCore {
     public void setSourceWord(String sourceWord) {
         this.sourceWord =  sourceWord.substring(0, 1).toUpperCase() + sourceWord.toLowerCase().substring(1);
 
+    }
+
+    public String getSourceWordlURL() throws Exception {
+        return new LangLinksRequester(sourceWord, fromLanguage, toLanguage).getWordURL();
     }
 
     public void setFromLanguage(String fromLanguage) {

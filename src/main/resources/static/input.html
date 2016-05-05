@@ -1,77 +1,52 @@
 <form role="form" name="mainInput" id="mainInput"  ng-submit="formSubmit()"  method="post">
-    <!--<table border="0" style="width:100%">-->
-        <!--<tr>-->
-            <!--<td id="fromLanguageGroup">-->
-                <!--<label>From:</label>-->
-                <!--<div class="btn-group-xs">-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options"  ng-model="input.sensdu.fromLanguage"-->
-                              <!--uib-btn-radio="uk" autocomplete="off">Ukrainian-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.fromLanguage" checked-->
-                               <!--uib-btn-radio="en" autocomplete="off">English-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.fromLanguage"-->
-                               <!--uib-btn-radio="de" autocomplete="off">German-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.fromLanguage"-->
-                               <!--uib-btn-radio="ru" autocomplete="off">Russian-->
-                        <!--</input>-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</td>-->
 
-            <!--<td id="toLanguageGroup">-->
-                <!--<label>To:</label>-->
-                <!--<div class="btn-group-xs" data-toggle="buttons">-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.toLanguage"-->
-                               <!--uib-btn-radio="en" autocomplete="off">English-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.toLanguage"-->
-                               <!--uib-btn-radio="de" autocomplete="off">German-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.toLanguage"-->
-                               <!--uib-btn-radio="ru" autocomplete="off">Russian-->
-                        <!--</input>-->
-                    <!--</label>-->
-                    <!--<label class="btn btn-default">-->
-                        <!--<input type="radio" name="options" ng-model="input.sensdu.toLanguage"-->
-                               <!--uib-btn-radio="uk" autocomplete="off" checked>Ukrainian-->
-                        <!--</input>-->
-                    <!--</label>-->
-                <!--</div>-->
-            <!--</td>-->
-        <!--</tr>-->
-    <!--</table>-->
-    <div id="fromLanguage" class="form-group">
-        <label for="fromLanguage"></label>
-        <input type="text" placeholder="from" ng-model="sensdu.fromLanguage"/>
+    <table border="0" style="width:100%">
+        <tr>
+            <td id="fromLanguageGroup">
+                <label>From:</label>
+                <div class="btn-group-xs">
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" required>
+                        Ukrainian
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" required>
+                        English
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'ru'" required>
+                        Russian
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'de'" required>
+                        German
+                    </label>
+                </div>
+            </td>
 
-    </div>
-    <div id="toLanguage" class="form-group">
-        <label for="toLanguage"></label>
-        <input type="text" placeholder="to" ng-model="sensdu.toLanguage"/>
-
-    </div>
+            <td id="toLanguageGroup">
+                <label>From:</label>
+                <div class="btn-group-xs">
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" required>
+                        English
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" required>
+                        Ukrainian
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'ru'" required>
+                        Russian
+                    </label>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'de'" required>
+                        German
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
 
     <div id="wordInput" class="form-group">
         <label for="word"></label>
         <input type="text" id="word" name="word" class="form-control"
-               placeholder="Enter the word for translation" ng-model="sensdu.sourceWord"/>
-
+               placeholder="Enter the word for translation" ng-model="sensdu.sourceWord" required/>
     </div>
 
     <button type="submit" class="btn btn-success">Translate</button>
-    <input type="reset" uib-btn-radio="Reset" class="btn btn-danger" onclick="reset()"/>
+    <button type="reset"  class="btn btn-danger">Reset</button>
+
 </form>

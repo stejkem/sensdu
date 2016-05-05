@@ -1,4 +1,21 @@
-<p><strong>Your word: {{sensdu.word}} </strong></p>
-<p><strong>Sense-for-sense translation: {{sensdu.translatedWord}} </strong></p>
-<p>Read more on Wikipedia: {{sensdu.translatedWordURL}} </p>
-<a ui-sref-active="active" ui-sref="input">Translate another word</a>
+<p>
+    <strong>
+        Your word:
+    </strong>
+        {{sensdu.word}}
+    <p><a ng-href="{{sensdu.wordURL}}">read on Wikipedia</a></p>
+</p>
+
+<p>
+    <strong>
+        Sense-for-sense translation:
+    </strong>
+    {{sensdu.translatedWord}}
+    <p><a ng-href="{{sensdu.translatedWordURL}}">read on Wikipedia</a></p>
+</p>
+
+<div id="gapSpace"></div>
+
+<p>
+    <a ui-sref-active="active" ui-sref="input">Translate another word</a>
+</p>

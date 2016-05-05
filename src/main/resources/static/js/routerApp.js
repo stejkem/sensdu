@@ -1,8 +1,8 @@
-   var routerApp = angular.module('routerApp', ['ui.router']);
+   var routerApp = angular.module('routerApp', ['ui.router' , 'ui.bootstrap']);
 
    routerApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-              $urlRouterProvider.otherwise('/input');
+              $urlRouterProvider.otherwise('/');
               $stateProvider
                   .state('input', {
                       url: '/',
@@ -21,6 +21,10 @@
     })
 
    .controller('inputController', function($scope, $rootScope, $http, $state) {
+         $scope.sensdu = {};
+         $scope.sensdu.fromLanguage = 'uk';
+         $scope.sensdu.toLanguage = 'en';
+
          $scope.formSubmit = function() {
              $http.post('/resource', $scope.sensdu).then(function(response) {
                    $rootScope.sensdu = response.data;

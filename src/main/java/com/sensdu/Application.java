@@ -6,8 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SensduApplication extends SpringBootServletInitializer {
-    private static Class<SensduApplication> applicationClass = SensduApplication.class;
+public class Application extends SpringBootServletInitializer {
+
+    private static Class<Application> applicationClass = Application.class;
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -15,6 +16,6 @@ public class SensduApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SensduApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

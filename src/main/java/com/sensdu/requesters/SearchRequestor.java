@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.List;
 
 public class SearchRequestor implements Requester {
+
     private String wordForSearch;
     private String languageOfWord;
 

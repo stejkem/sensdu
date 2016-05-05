@@ -1,3 +1,4 @@
+/* ==================================================== Boilerplate code for sticky footnote. */
 html,
       body {
         height: 100%;
@@ -50,10 +51,19 @@ html,
         color: #808080;
       }
 
+/* ==================================================== Boilerplate code for sticky footnote. */
+
+
+/* ==================================================== Custom CSS amendments =============== */
+
       #fromLanguageGroup {
         float: left;
       }
 
       #toLanguageGroup {
         float: right;
+      }
+
+      #gapSpace {
+        height: 40px;
       }
