@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppErrorController implements ErrorController {
     private static final String PATH = "/error";
 
-    @RequestMapping(value=PATH)
-    public String error() {
-        return "index.html";
-    }
-
     @Override
     public String getErrorPath() {
         return PATH;
+    }
+
+    @RequestMapping(value=PATH)
+    public String error405_500() {
+        return "405.html";
+    }
+
+    @RequestMapping("/404")
+    String error404() {
+        return "404.html";
     }
 
 }

@@ -2,7 +2,7 @@
 
    routerApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-              $urlRouterProvider.otherwise('/');
+              $urlRouterProvider.otherwise('/404');
               $stateProvider
                   .state('input', {
                       url: '/',
@@ -12,7 +12,11 @@
                   .state('output', {
                       url: '/',
                       templateUrl: 'output.html'
-                  });
+                  })
+                  .state('405', {
+                        url: '/',
+                        templateUrl: '405.html'
+                   });
 
                   $locationProvider.html5Mode({
                         enabled: true,
@@ -26,9 +30,13 @@
          $scope.sensdu.toLanguage = 'en';
 
          $scope.formSubmit = function() {
-             $http.post('/resource', $scope.sensdu).then(function(response) {
+             $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                    $rootScope.sensdu = response.data;
                    $state.go('output');
+             },
+
+             function errorCallback(response) {
+                    $state.go('405');
              })
          }
    });

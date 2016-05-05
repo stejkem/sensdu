@@ -67,3 +67,9 @@ html,
       #gapSpace {
         height: 40px;
       }
+
+      /* fit images to container */
+      .container img {
+          max-width: 30%;
+          max-height: 30%;
+      }
