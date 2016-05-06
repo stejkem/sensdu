@@ -2,7 +2,7 @@
 
    routerApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-              $urlRouterProvider.otherwise('/404');
+              $urlRouterProvider.otherwise('/405');
               $stateProvider
                   .state('input', {
                       url: '/',
