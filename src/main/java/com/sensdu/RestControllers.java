@@ -1,6 +1,8 @@
 package com.sensdu;
 
 import com.sensdu.core.SensduCore;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -10,13 +12,17 @@ import java.util.Map;
 public class RestControllers {
 
     @RequestMapping(value="/resource")
-    public @ResponseBody Map<String,Object> setData(@RequestBody SensduCore sensdu) throws Exception {
+    public ResponseEntity<Map<String, Object>> setData(@RequestBody SensduCore sensdu) {
         Map<String, Object> model = new HashMap<>();
         model.put("word", sensdu.getSourceWord());
-        model.put("wordURL", sensdu.getSourceWordlURL());
-        model.put("translatedWord", sensdu.getTranslatedWord());
-        model.put("translatedWordURL", sensdu.getTranslatedWordURL());
-        return model;
+        try {
+            model.put("wordURL", sensdu.getSourceWordlURL());
+            model.put("translatedWord", sensdu.getTranslatedWord());
+            model.put("translatedWordURL", sensdu.getTranslatedWordURL());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        return ResponseEntity.ok(model);
     }
 
 }

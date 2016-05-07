@@ -2,7 +2,7 @@
 
    routerApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-              $urlRouterProvider.otherwise('/405');
+              $urlRouterProvider.otherwise('/404');
               $stateProvider
                   .state('input', {
                       url: '/',
@@ -13,9 +13,9 @@
                       url: '/',
                       templateUrl: 'output.html'
                   })
-                  .state('405', {
+                  .state('400', {
                         url: '/',
-                        templateUrl: '405.html'
+                        templateUrl: '400.html'
                    });
 
                   $locationProvider.html5Mode({
@@ -26,17 +26,26 @@
 
    .controller('inputController', function($scope, $rootScope, $http, $state) {
          $scope.sensdu = {};
+         $scope.formHelper = {};
          $scope.sensdu.fromLanguage = 'uk';
          $scope.sensdu.toLanguage = 'en';
+
+         $scope.formHelper.fromLanguageCode = 'ru';
+         $scope.formHelper.fromLanguage = 'Russian';
+
+         $scope.changeLanguage = function(fromLanguageCode, fromLanguage) {
+             $scope.formHelper.fromLanguageCode = fromLanguageCode;
+             $scope.formHelper.fromLanguage = fromLanguage;
+             $scope.sensdu.fromLanguage = fromLanguageCode;
+         }
 
          $scope.formSubmit = function() {
              $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                    $rootScope.sensdu = response.data;
                    $state.go('output');
              },
-
              function errorCallback(response) {
-                    $state.go('405');
+                    $state.go('400');
              })
          }
    });

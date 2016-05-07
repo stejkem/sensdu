@@ -5,34 +5,46 @@
             <td id="fromLanguageGroup">
                 <label>From:</label>
                 <div class="btn-group-xs">
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" required>
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'">
                         Ukrainian
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" required>
+                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'">
                         English
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'ru'" required>
-                        Russian
+                    <label class="btn btn-default" ng-click="changeLanguage('de', 'German')" ng-model="sensdu.fromLanguage" uib-btn-radio="{{formHelper.fromLanguageCode}}">
+                        {{formHelper.fromLanguage}}
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'de'" required>
-                        German
-                    </label>
+
+                    <!-- Single dropdown button -->
+                    <div class="btn-group" uib-dropdown is-open="status.isopen">
+                        <button id="single-button" type="button" class="btn btn-default btn-xs" uib-dropdown-toggle ng-disabled="disabled">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li role="menuitem">
+                                <a href="#" ng-click="changeLanguage('de', 'German')">German</a>
+                                <a href="#" ng-click="changeLanguage('ja', 'Japanese')">Japanese</a>
+
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </td>
 
             <td id="toLanguageGroup">
-                <label>From:</label>
+                <label>To:</label>
                 <div class="btn-group-xs">
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" required>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'">
                         English
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" required>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'">
                         Ukrainian
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'ru'" required>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'ru'">
                         Russian
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'de'" required>
+                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'de'">
                         German
                     </label>
                 </div>
@@ -50,3 +62,8 @@
     <button type="reset"  class="btn btn-danger">Reset</button>
 
 </form>
+<!--For debuggin purposes-->
+<pre>
+    {{sensdu}}
+    {{formHelper}}
+ </pre>
