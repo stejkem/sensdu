@@ -3,28 +3,38 @@
     <table border="0" style="width:100%">
         <tr>
             <td id="fromLanguageGroup">
-                <label>From:</label>
-                <div class="btn-group-xs">
+                <strong><p>From:</p></strong>
+                <div class="btn-group">
                     <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'">
                         Ukrainian
                     </label>
                     <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'">
                         English
                     </label>
-                    <label class="btn btn-default" ng-click="changeLanguage('de', 'German')" ng-model="sensdu.fromLanguage" uib-btn-radio="{{formHelper.fromLanguageCode}}">
+                    <label class="btn btn-default"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode">
                         {{formHelper.fromLanguage}}
                     </label>
 
                     <!-- Single dropdown button -->
-                    <div class="btn-group" uib-dropdown is-open="status.isopen">
-                        <button id="single-button" type="button" class="btn btn-default btn-xs" uib-dropdown-toggle ng-disabled="disabled">
+                    <div class="btn-group" uib-dropdown keyboard-nav>
+                        <button id="single-button-from" type="button" class="btn btn-default" uib-dropdown-toggle  ng-disabled="disabled">
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                        <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-from">
                             <li role="menuitem">
-                                <a href="#" ng-click="changeLanguage('de', 'German')">German</a>
-                                <a href="#" ng-click="changeLanguage('ja', 'Japanese')">Japanese</a>
-
+                                <a href="#" ng-click="changeLanguageInFromGroup('ru', 'Russian')">Russian</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('sv', 'Swedish')">Swedish</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('de', 'German')">German</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('nl', 'Dutch')">Dutch</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('fr', 'French')">French</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('it', 'Italian')">Italian</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('es', 'Spanish')">Spanish</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('pl', 'Polish')">Polish</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('ja', 'Japanese')">Japanese</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('zh', 'Chinese')">Chinese</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('tr', 'Turkish')">Turkish</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('ko', 'Korean')">Korean</a>
+                                <a href="#" ng-click="changeLanguageInFromGroup('ka', 'Georgian')">Georgian</a>
                             </li>
                         </ul>
                     </div>
@@ -33,20 +43,42 @@
             </td>
 
             <td id="toLanguageGroup">
-                <label>To:</label>
-                <div class="btn-group-xs">
+                <strong><p>To:</p></strong>
+                <div class="btn-group">
                     <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'">
                         English
                     </label>
                     <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'">
                         Ukrainian
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'ru'">
-                        Russian
+                    <label class="btn btn-default"  ng-model="sensdu.toLanguage" uib-btn-radio="formHelper.toLanguageCode">
+                        {{formHelper.toLanguage}}
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'de'">
-                        German
-                    </label>
+
+                    <!-- Single dropdown button -->
+                    <div class="btn-group" uib-dropdown keyboard-nav>
+                        <button id="single-button-to" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-to">
+                            <li role="menuitem">
+                                <a href="#" ng-click="changeLanguageInToGroup('ru', 'Russian')">Russian</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('sv', 'Swedish')">Swedish</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('de', 'German')">German</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('nl', 'Dutch')">Dutch</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('fr', 'French')">French</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('it', 'Italian')">Italian</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('es', 'Spanish')">Spanish</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('pl', 'Polish')">Polish</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('ja', 'Japanese')">Japanese</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('zh', 'Chinese')">Chinese</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('tr', 'Turkish')">Turkish</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('ko', 'Korean')">Korean</a>
+                                <a href="#" ng-click="changeLanguageInToGroup('ka', 'Georgian')">Georgian</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </td>
         </tr>
@@ -62,8 +94,3 @@
     <button type="reset"  class="btn btn-danger">Reset</button>
 
 </form>
-<!--For debuggin purposes-->
-<pre>
-    {{sensdu}}
-    {{formHelper}}
- </pre>

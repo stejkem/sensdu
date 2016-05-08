@@ -33,10 +33,19 @@
          $scope.formHelper.fromLanguageCode = 'ru';
          $scope.formHelper.fromLanguage = 'Russian';
 
-         $scope.changeLanguage = function(fromLanguageCode, fromLanguage) {
+         $scope.formHelper.toLanguageCode = 'ru';
+         $scope.formHelper.toLanguage = 'Russian';
+
+         $scope.changeLanguageInFromGroup = function(fromLanguageCode, fromLanguage) {
              $scope.formHelper.fromLanguageCode = fromLanguageCode;
              $scope.formHelper.fromLanguage = fromLanguage;
              $scope.sensdu.fromLanguage = fromLanguageCode;
+         }
+
+         $scope.changeLanguageInToGroup = function(toLanguageCode, toLanguage) {
+             $scope.formHelper.toLanguageCode = toLanguageCode;
+             $scope.formHelper.toLanguage = toLanguage;
+             $scope.sensdu.toLanguage = toLanguageCode;
          }
 
          $scope.formSubmit = function() {
