@@ -4,7 +4,7 @@
         <tr>
             <td id="fromLanguageGroup">
                 <strong><p>From:</p></strong>
-                <div class="btn-group">
+                <div class="btn-group" ng-click="validateLanguagesInFromGroup()">
                     <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'">
                         Ukrainian
                     </label>
@@ -44,7 +44,7 @@
 
             <td id="toLanguageGroup">
                 <strong><p>To:</p></strong>
-                <div class="btn-group">
+                <div class="btn-group"  ng-click="validateLanguagesInToGroup()">
                     <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'">
                         English
                     </label>
@@ -91,6 +91,6 @@
     </div>
 
     <button type="submit" class="btn btn-success">Translate</button>
-    <button type="reset"  class="btn btn-danger">Reset</button>
+    <button type="reset"  class="btn btn-danger" ng-click="reset()">Reset</button>
 
 </form>

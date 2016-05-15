@@ -1,6 +1,8 @@
 package com.sensdu.core;
 
 import com.sensdu.requesters.LangLinksRequester;
+import com.sensdu.requesters.SearchRequestor;
+
 import java.util.List;
 
 public class SensduCore {
@@ -58,4 +60,7 @@ public class SensduCore {
         return new LangLinksRequester(sourceWord, fromLanguage, toLanguage).getURLOfTranlatedWord();
     }
 
+    public List<String> getSourceWordSearchSuggestion() throws Exception {
+        return new SearchRequestor(sourceWord, fromLanguage).getSearchSuggestion();
+    }
 }

@@ -13,6 +13,11 @@
                       url: '/',
                       templateUrl: 'output.html'
                   })
+                  .state('disambiguation', {
+                      url: '/',
+                      templateUrl: 'disambiguation.html'
+
+                  })
                   .state('400', {
                         url: '/',
                         templateUrl: '400.html'
@@ -51,10 +56,45 @@
          $scope.formSubmit = function() {
              $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                    $rootScope.sensdu = response.data;
-                   $state.go('output');
+                   if ($scope.sensdu.translatedWord == null) {
+                        $state.go('disambiguation');
+                   } else {
+                        $state.go('output');
+                   }
              },
              function errorCallback(response) {
                     $state.go('400');
              })
          }
+
+         $scope.reset = function() {
+            $scope.sensdu.fromLanguage = 'uk';
+            $scope.sensdu.toLanguage = 'en';
+            $scope.formHelper.fromLanguageCode = 'ru';
+            $scope.formHelper.fromLanguage = 'Russian';
+
+            $scope.formHelper.toLanguageCode = 'ru';
+            $scope.formHelper.toLanguage = 'Russian';
+         }
+
+         $scope.validateLanguagesInFromGroup = function() {
+             if($scope.sensdu.fromLanguage == $scope.sensdu.toLanguage) {
+                 if ($scope.sensdu.toLanguage == 'uk') {
+                    $scope.sensdu.toLanguage = 'en';
+                 } else {
+                    $scope.sensdu.toLanguage = 'uk';
+                 }
+             }
+         }
+
+         $scope.validateLanguagesInToGroup = function() {
+             if($scope.sensdu.toLanguage == $scope.sensdu.fromLanguage) {
+                 if ($scope.sensdu.fromLanguage == 'en') {
+                    $scope.sensdu.fromLanguage = 'uk';
+                 } else {
+                    $scope.sensdu.fromLanguage = 'en';
+                 }
+             }
+         }
+
    });

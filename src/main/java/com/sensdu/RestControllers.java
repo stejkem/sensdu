@@ -19,8 +19,14 @@ public class RestControllers {
             model.put("wordURL", sensdu.getSourceWordlURL());
             model.put("translatedWord", sensdu.getTranslatedWord());
             model.put("translatedWordURL", sensdu.getTranslatedWordURL());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (Exception firstE) {
+                if(firstE.getClass().equals(NullPointerException.class)) {
+                    try {
+                        model.put("wordSuggection", sensdu.getSourceWordSearchSuggestion());
+                    } catch (Exception secondE) {
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+                    }
+                }
         }
         return ResponseEntity.ok(model);
     }

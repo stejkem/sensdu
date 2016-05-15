@@ -1,0 +1,13 @@
+<form role="form" name="disambiguation" id="disambiguationInput">
+
+    The word has several meanings. Please, specify your request.
+    <div id="gapSpace"></div>
+    <select class="form-control" ng-change="disambiguate()" ng-model="sensdu.sourceWord"
+            ng-options="o as o for o in sensdu.wordSuggection" required>
+    </select>
+
+    <pre>
+        {{sensdu}}
+    </pre>
+
+</form>

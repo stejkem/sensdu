@@ -30,7 +30,7 @@ public class SearchRequestor implements Requester {
         Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
         List<String> wordSearchSuggestion = JsonPath.read(jsonDocument, "$.query.search[*].title");
 
-        return wordSearchSuggestion;
+        return wordSearchSuggestion.subList(1, wordSearchSuggestion.size());
     }
 
     private URL URLBuilder() throws Exception {
