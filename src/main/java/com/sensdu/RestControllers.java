@@ -16,12 +16,18 @@ public class RestControllers {
         Map<String, Object> model = new HashMap<>();
         model.put("word", sensdu.getSourceWord());
         try {
-            model.put("wordURL", sensdu.getSourceWordlURL());
-            model.put("translatedWord", sensdu.getTranslatedWord());
-            model.put("translatedWordURL", sensdu.getTranslatedWordURL());
+            if (sensdu.isDisambiguationArticle()) {
+                throw new NullPointerException();
+            } else {
+                model.put("wordURL", sensdu.getSourceWordlURL());
+                model.put("translatedWord", sensdu.getTranslatedWord());
+                model.put("translatedWordURL", sensdu.getTranslatedWordURL());
+            }
         } catch (Exception firstE) {
                 if(firstE.getClass().equals(NullPointerException.class)) {
                     try {
+                        model.put("toLanguage", sensdu.getToLanguage());
+                        model.put("fromLanguage", sensdu.getFromLanguage());
                         model.put("wordSuggection", sensdu.getSourceWordSearchSuggestion());
                     } catch (Exception secondE) {
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);

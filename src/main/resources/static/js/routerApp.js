@@ -15,7 +15,8 @@
                   })
                   .state('disambiguation', {
                       url: '/',
-                      templateUrl: 'disambiguation.html'
+                      templateUrl: 'disambiguation.html',
+                      controller: 'disambiguationController'
 
                   })
                   .state('400', {
@@ -56,7 +57,7 @@
          $scope.formSubmit = function() {
              $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                    $rootScope.sensdu = response.data;
-                   if ($scope.sensdu.translatedWord == null) {
+                   if ($rootScope.sensdu.translatedWord == null) {
                         $state.go('disambiguation');
                    } else {
                         $state.go('output');
@@ -97,4 +98,22 @@
              }
          }
 
-   });
+   })
+
+     .controller('disambiguationController', function($scope, $rootScope, $http, $state) {
+
+             $scope.formSubmit = function() {
+                 $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
+                       $rootScope.sensdu = response.data;
+                       if ($rootScope.sensdu.translatedWord == null) {
+                            $state.go('400');
+                       } else {
+                            $state.go('output');
+                       }
+                 },
+                 function errorCallback(response) {
+                        $state.go('400');
+                 })
+             }
+
+       });

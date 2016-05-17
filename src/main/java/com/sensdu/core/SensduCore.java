@@ -1,7 +1,8 @@
 package com.sensdu.core;
 
 import com.sensdu.requesters.LangLinksRequester;
-import com.sensdu.requesters.SearchRequestor;
+import com.sensdu.requesters.SearchRequester;
+import com.sensdu.requesters.isDisambiguationRequester;
 
 import java.util.List;
 
@@ -61,6 +62,10 @@ public class SensduCore {
     }
 
     public List<String> getSourceWordSearchSuggestion() throws Exception {
-        return new SearchRequestor(sourceWord, fromLanguage).getSearchSuggestion();
+        return new SearchRequester(sourceWord, fromLanguage).getSearchSuggestion();
+    }
+
+    public Boolean isDisambiguationArticle() throws Exception {
+        return new isDisambiguationRequester(sourceWord, fromLanguage).isDisambiguationArticle();
     }
 }

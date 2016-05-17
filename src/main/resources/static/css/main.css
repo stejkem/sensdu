@@ -64,8 +64,8 @@ html,
         float: right;
       }
 
-      #gapSpace {
-        height: 40px;
+      .gapSpace {
+            height: 40px;
       }
 
       /* fit images to container */

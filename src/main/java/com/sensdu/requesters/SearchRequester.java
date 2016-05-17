@@ -8,12 +8,12 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 
-public class SearchRequestor implements Requester {
+public class SearchRequester implements Requester {
 
     private String wordForSearch;
     private String languageOfWord;
 
-    public SearchRequestor(String wordForSearch, String languageOfWord) {
+    public SearchRequester(String wordForSearch, String languageOfWord) {
         this.wordForSearch = wordForSearch;
         this.languageOfWord = languageOfWord;
     }
@@ -39,7 +39,7 @@ public class SearchRequestor implements Requester {
         request.append(languageOfWord);
         request.append(".wikipedia.org/w/api.php?action=query&list=search&srsearch=");
         request.append(wordForSearch.replaceAll("\\s+", "%20"));
-        request.append("&srlimit=500&format=json");
+        request.append("&srlimit=50&format=json");
         return new URL(request.toString());
     }
 
