@@ -1,0 +1,22 @@
+{
+  "name": "sensdu",
+  "version": "1.0.0",
+  "description": "Sense-for-sense translation powered by Wikipedia",
+  "main": "npm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stejkem/sensdu.git"
+  },
+  "keywords": [
+    "translator"
+  ],
+  "author": "stejkem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stejkem/sensdu/issues"
+  },
+  "homepage": "https://github.com/stejkem/sensdu#readme"
+}
