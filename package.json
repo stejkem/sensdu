@@ -1,8 +1,8 @@
 {
   "name": "sensdu",
   "version": "1.0.0",
-  "description": "Sense-for-sense translation powered by Wikipedia",
-  "main": "npm.js",
+  "description": "Sensum de sensu (sense-for-sense) translation powered by Wikipedia. ",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,9 +14,15 @@
     "translator"
   ],
   "author": "stejkem",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/stejkem/sensdu/issues"
   },
-  "homepage": "https://github.com/stejkem/sensdu#readme"
+  "homepage": "https://github.com/stejkem/sensdu#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-ui-bootstrap": "^1.3.2",
+    "angular-ui-router": "^0.3.0",
+    "bootstrap": "^3.3.6"
+  }
 }
