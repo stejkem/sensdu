@@ -4,7 +4,8 @@
     <div class="gapSpace"></div>
 
     <select class="form-control" ng-change="disambiguate()" ng-model="sensdu.sourceWord"
-            ng-options="o as o for o in sensdu.wordSuggection" required>
+            ng-options="o for o in sensdu.wordSuggestion">
+            <option style="display:none" value=""></option>
     </select>
 
     <div class="gapSpace"></div>

@@ -28,7 +28,7 @@ public class RestControllers {
                     try {
                         model.put("toLanguage", sensdu.getToLanguage());
                         model.put("fromLanguage", sensdu.getFromLanguage());
-                        model.put("wordSuggection", sensdu.getSourceWordSearchSuggestion());
+                        model.put("wordSuggestion", sensdu.getSourceWordSearchSuggestion());
                     } catch (Exception secondE) {
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
                     }

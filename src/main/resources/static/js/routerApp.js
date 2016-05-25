@@ -101,6 +101,7 @@
    })
 
      .controller('disambiguationController', function($scope, $rootScope, $http, $state) {
+             $scope.sensdu.sourceWord = $scope.sensdu.wordSuggestion[0];
 
              $scope.formSubmit = function() {
                  $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
