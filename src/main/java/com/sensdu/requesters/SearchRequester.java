@@ -10,11 +10,11 @@ import java.util.List;
 
 public class SearchRequester implements Requester {
 
-    private String wordForSearch;
+    private String sourceWord;
     private String languageOfWord;
 
-    public SearchRequester(String wordForSearch, String languageOfWord) {
-        this.wordForSearch = wordForSearch;
+    public SearchRequester(String sourceWord, String languageOfWord) {
+        this.sourceWord = sourceWord;
         this.languageOfWord = languageOfWord;
     }
 
@@ -38,7 +38,7 @@ public class SearchRequester implements Requester {
         request.append("https://");
         request.append(languageOfWord);
         request.append(".wikipedia.org/w/api.php?action=query&list=search&srsearch=");
-        request.append(wordForSearch.replaceAll("\\s+", "%20"));
+        request.append(sourceWord.replaceAll("\\s+", "%20"));
         request.append("&srlimit=50&format=json");
         return new URL(request.toString());
     }

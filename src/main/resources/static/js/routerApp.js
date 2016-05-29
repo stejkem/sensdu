@@ -54,29 +54,28 @@
              $scope.sensdu.toLanguage = toLanguageCode;
          }
 
+
          $scope.formSubmit = function() {
-             $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
-                   $rootScope.sensdu = response.data;
-                   if ($rootScope.sensdu.translatedWord == null) {
-                        $state.go('disambiguation');
-                   } else {
-                        $state.go('output');
-                   }
-             },
-             function errorCallback(response) {
-                    $state.go('400');
-             })
+            $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
+               $scope.sensdu = response.data;
+            },
+            function errorCallback(response) {
+                    $scope.sensdu.state = "noTranslation";
+            })
          }
 
          $scope.reset = function() {
-            $scope.sensdu.fromLanguage = 'uk';
-            $scope.sensdu.toLanguage = 'en';
-            $scope.formHelper.fromLanguageCode = 'ru';
-            $scope.formHelper.fromLanguage = 'Russian';
+             $scope.sensdu = {};
+             $scope.sensdu.fromLanguage = 'uk';
+             $scope.sensdu.toLanguage = 'en';
+             $scope.formHelper.fromLanguageCode = 'ru';
+             $scope.formHelper.fromLanguage = 'Russian';
 
-            $scope.formHelper.toLanguageCode = 'ru';
-            $scope.formHelper.toLanguage = 'Russian';
+             $scope.formHelper.toLanguageCode = 'ru';
+             $scope.formHelper.toLanguage = 'Russian';
+
          }
+
 
          $scope.validateLanguagesInFromGroup = function() {
              if($scope.sensdu.fromLanguage == $scope.sensdu.toLanguage) {
@@ -98,23 +97,4 @@
              }
          }
 
-   })
-
-     .controller('disambiguationController', function($scope, $rootScope, $http, $state) {
-             $scope.sensdu.sourceWord = $scope.sensdu.wordSuggestion[0];
-
-             $scope.formSubmit = function() {
-                 $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
-                       $rootScope.sensdu = response.data;
-                       if ($rootScope.sensdu.translatedWord == null) {
-                            $state.go('400');
-                       } else {
-                            $state.go('output');
-                       }
-                 },
-                 function errorCallback(response) {
-                        $state.go('400');
-                 })
-             }
-
-       });
+   });

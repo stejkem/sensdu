@@ -14,11 +14,14 @@ public class RestControllers {
     @RequestMapping(value="/resource")
     public ResponseEntity<Map<String, Object>> setData(@RequestBody SensduCore sensdu) {
         Map<String, Object> model = new HashMap<>();
-        model.put("word", sensdu.getSourceWord());
+        model.put("sourceWord", sensdu.getSourceWord());
         try {
             if (sensdu.isDisambiguationArticle()) {
                 throw new NullPointerException();
             } else {
+                model.put("state", "traslated");
+                model.put("toLanguage", sensdu.getToLanguage());
+                model.put("fromLanguage", sensdu.getFromLanguage());
                 model.put("wordURL", sensdu.getSourceWordlURL());
                 model.put("translatedWord", sensdu.getTranslatedWord());
                 model.put("translatedWordURL", sensdu.getTranslatedWordURL());
@@ -26,6 +29,7 @@ public class RestControllers {
         } catch (Exception firstE) {
                 if(firstE.getClass().equals(NullPointerException.class)) {
                     try {
+                        model.put("state", "disambiguated");
                         model.put("toLanguage", sensdu.getToLanguage());
                         model.put("fromLanguage", sensdu.getFromLanguage());
                         model.put("wordSuggestion", sensdu.getSourceWordSearchSuggestion());
