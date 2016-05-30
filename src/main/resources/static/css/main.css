@@ -78,4 +78,9 @@ html,
            resize:none;
            overflow: hidden;
       }
-
+      .inputPad {
+        padding-bottom: 65px;
+      }
+      .form-control {
+        height: 94px;
+       }

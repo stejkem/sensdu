@@ -8,6 +8,7 @@ import java.util.List;
 
 public class SensduCore {
 
+    private String state;
     private String fromLanguage;
     private String toLanguage;
     private String sourceWord;
@@ -22,6 +23,14 @@ public class SensduCore {
         this.sourceWord = sourceWord.toLowerCase();
         this.fromLanguage = fromLanguage.toLowerCase();
         this.toLanguage = toLanguage.toLowerCase();
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getSourceWord() {

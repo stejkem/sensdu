@@ -33,6 +33,7 @@
    .controller('inputController', function($scope, $rootScope, $http, $state) {
          $scope.sensdu = {};
          $scope.formHelper = {};
+         $scope.sensdu.state = "initiated";
          $scope.sensdu.fromLanguage = 'uk';
          $scope.sensdu.toLanguage = 'en';
 
@@ -60,7 +61,8 @@
                $scope.sensdu = response.data;
             },
             function errorCallback(response) {
-                    $scope.sensdu.state = "noTranslation";
+                 $scope.sensdu.sourceWord = null;
+                 $scope.sensdu.state = "error";
             })
          }
 
@@ -74,6 +76,12 @@
              $scope.formHelper.toLanguageCode = 'ru';
              $scope.formHelper.toLanguage = 'Russian';
 
+         }
+
+         $scope.partialReset = function() {
+              $scope.sensdu.wordURL = null;
+              $scope.sensdu.translatedWord = null;
+              $scope.sensdu.translatedWordURL = null;
          }
 
 
