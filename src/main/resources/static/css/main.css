@@ -56,31 +56,33 @@ html,
 
 /* ==================================================== Custom CSS amendments =============== */
 
-      #fromLanguageGroup {
+    #fromLanguageGroup {
         float: left;
-      }
+    }
 
-      #toLanguageGroup {
+    #toLanguageGroup {
         float: right;
-      }
+    }
 
-      .gapSpace {
-            height: 40px;
-      }
+    .gapSpace {
+        height: 40px;
+    }
 
-      /* fit images to container */
-      .container img {
-          max-width: 30%;
-          max-height: 30%;
-      }
+    /* fit images to container */
+    .container img {
+        max-width: 30%;
+        max-height: 30%;
+    }
 
-      textarea {
-           resize:none;
-           overflow: hidden;
-      }
-      .inputPad {
+    textarea {
+        resize:none;
+        overflow: hidden;
+    }
+
+    .inputPad {
         padding-bottom: 65px;
-      }
-      .form-control {
+    }
+
+    .form-control {
         height: 94px;
-       }
+    }

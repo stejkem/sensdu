@@ -82,17 +82,14 @@
     <div class="row">
         <div class="col-md-6">
             <p></p>
-                <div class="form-group has-warning">
                     <select class="form-control inputPad" ng-show="sensdu.state == 'ambiguousArticle'" ng-model="sensdu.sourceWord"
                          ng-options="o for o in sensdu.wordSuggestion">
                          <option style="display:none" value="">Please, specify your request</option>
                     </select>
-                </div>
-                <div class="form-group">
                     <input class="form-control inputPad" ng-hide="sensdu.state == 'ambiguousArticle'" id="wordInput"
                        placeholder="Enter the word for translation" ng-change="partialReset()"
                        ng-model="sensdu.sourceWord" required/>
-                </div>
+
         </div>
         <div class="col-md-6">
             <p></p>
@@ -105,7 +102,7 @@
             <textarea rows="4" ng-show="sensdu.state == 'error'"
                       class="form-control" readonly>There is no possibility to translate the requested word into the selected language using Wikipedia. Try other word.
             </textarea>
-            </div>
+
         </div>
     </div>
 
@@ -125,5 +122,8 @@
     <p></p>
     <button type="submit" class="btn btn-success">Translate</button>
     <button type="reset"  class="btn btn-danger" ng-click="reset()">Reset</button>
+    <!--<pre>-->
+        <!--{{sensdu}}-->
+    <!--</pre>-->
 
 </form>
