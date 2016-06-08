@@ -1,4 +1,7 @@
-# Created by .ignore support plugin (hsz.mobi)
+.gradle
+.idea
+build
+gradle
+node_modules
 *.iml
-*.idea
-Sandbox.*
+

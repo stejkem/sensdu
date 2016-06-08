@@ -86,3 +86,8 @@ html,
     .form-control {
         height: 94px;
     }
+
+    .container{
+        max-width: 60%;
+    }
+

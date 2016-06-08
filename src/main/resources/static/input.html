@@ -1,7 +1,7 @@
 <form role="form" name="mainInput" id="mainInput" ng-submit="formSubmit()" method="post">
-
     <div class="row">
         <div class="col-md-6">
+                <p>&nbsp</p>
                 <strong><p>From:</p></strong>
                 <div class="btn-group" ng-click="validateLanguagesInFromGroup()" >
                     <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
@@ -38,8 +38,16 @@
                         </ul>
                     </div>
                 </div>
+
+            <button type="button" id="swapLanguages" class="btn btn-default"
+                    ng-click="swapLanguages()" aria-label="Swap languages">
+                <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+            </button>
+
         </div>
+
         <div class="col-md-6">
+            <p>&nbsp</p>
             <strong><p>To:</p></strong>
             <div class="btn-group"  ng-click="validateLanguagesInToGroup()">
                 <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" >
@@ -124,6 +132,7 @@
     <button type="reset"  class="btn btn-danger" ng-click="reset()">Reset</button>
     <!--<pre>-->
         <!--{{sensdu}}-->
+        <!--{{formHelper}}-->
     <!--</pre>-->
 
 </form>
