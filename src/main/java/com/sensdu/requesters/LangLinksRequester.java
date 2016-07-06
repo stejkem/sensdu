@@ -11,21 +11,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class LangLinksRequester implements Requester {
+public class LangLinksRequester {
 
     private Map<String, WordAndURLTuple> langsAndWords;
     private String word;
     private String wordURL;
     private String toLanguage;
     private String fromLanguage;
+    private Boolean isDisambiguationArticle;
+    private List<String> searchSuggestion;
 
     public LangLinksRequester(String word, String fromLanguage, String toLanguage) throws Exception {
         langsAndWords = new HashMap<>();
         this.word = word;
         this.fromLanguage = fromLanguage;
         this.toLanguage = toLanguage;
-        fillInLangsAndWordMap();
-        fillInWordURL();
+        fillInObject();
     }
 
     public String getWordTranslation() {
@@ -38,7 +39,7 @@ public class LangLinksRequester implements Requester {
 
     public String getWordURL() {return  wordURL; }
 
-    private void fillInLangsAndWordMap() throws Exception {
+    private void fillInObject() throws Exception {
         URL requestToWiki = langLinksRequestBuilder();
 
         BufferedReader in = new BufferedReader(new InputStreamReader(requestToWiki.openStream()));
@@ -48,10 +49,16 @@ public class LangLinksRequester implements Requester {
             answerFromWebSite.append(inputLine);
         }
 
+        isDisambiguationArticle = answerFromWebSite.toString().contains("disambiguation");
+
         Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
         List<String> langsKey = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].lang");
         List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
         List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
+        List<String> wordURLs = JsonPath.read(jsonDocument, "$.query.pages[*].fullurl");
+        List<String> wordSearchSuggestion = JsonPath.read(jsonDocument, "$.query.pages[*].links[*].title");
+        searchSuggestion = wordSearchSuggestion.subList(1, wordSearchSuggestion.size());
+        wordURL = wordURLs.get(0);
 
         Iterator<String> langsKeyIter = langsKey.iterator();
         Iterator<String> wordValuesIter = wordValues.iterator();
@@ -63,21 +70,6 @@ public class LangLinksRequester implements Requester {
 
     }
 
-    private void fillInWordURL() throws Exception{
-        URL requestToWiki = pageInfoRequestBuilder();
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(requestToWiki.openStream()));
-        StringBuilder answerFromWebSite = new StringBuilder();
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            answerFromWebSite.append(inputLine);
-        }
-
-        Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
-        List<String> wordURLs = JsonPath.read(jsonDocument, "$.query.pages[*].fullurl");
-        wordURL = wordURLs.get(0);
-    }
-
     private URL langLinksRequestBuilder() throws Exception {
         StringBuilder request = new StringBuilder();
         request.append("https://");
@@ -85,18 +77,15 @@ public class LangLinksRequester implements Requester {
         request.append(".wikipedia.org/w/api.php?action=query&titles=");
         request.append(word.replaceAll("\\s+","%20"));
         request.append("&redirects"); //added to check not only direct queries but also redirects
-        request.append("&prop=langlinks&formatversion=2&lllimit=500&format=json&llprop=url");
+        request.append("&prop=info|links|langlinks|pageprops&formatversion=2&lllimit=500&llprop=url&inprop=url&format=json");
         return new URL(request.toString());
     }
 
-    private URL pageInfoRequestBuilder() throws Exception {
-        StringBuilder request = new StringBuilder();
-        request.append("https://");
-        request.append(fromLanguage);
-        request.append(".wikipedia.org/w/api.php?action=query&titles=");
-        request.append(word.replaceAll("\\s+","%20"));
-        request.append("&prop=info&inprop=url&format=json");
-        return new URL(request.toString());
+    public Boolean isDisambiguationArticle() throws Exception {
+        return isDisambiguationArticle;
     }
 
+    public List<String> getSearchSuggestion() {
+        return searchSuggestion;
+    }
 }
