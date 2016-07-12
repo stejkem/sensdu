@@ -18,10 +18,10 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
 
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.59'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '7.0.59'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.59'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '7.0.59'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.54'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '7.0.54'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.54'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '7.0.54'
 
     compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.2.0'
 
