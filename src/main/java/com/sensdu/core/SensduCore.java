@@ -98,8 +98,7 @@ public class SensduCore {
         List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
         List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
         List<String> wordURLs = JsonPath.read(jsonDocument, "$.query.pages[*].fullurl");
-        List<String> wordSearchSuggestion = JsonPath.read(jsonDocument, "$.query.pages[*].links[*].title");
-        searchSuggestion = wordSearchSuggestion.subList(1, wordSearchSuggestion.size());
+        searchSuggestion = JsonPath.read(jsonDocument, "$.query.pages[*].links[*].title");
         wordURL = wordURLs.get(0);
 
         Iterator<String> langsKeyIter = langsKey.iterator();
@@ -119,7 +118,8 @@ public class SensduCore {
         request.append(".wikipedia.org/w/api.php?action=query&titles=");
         request.append(sourceWord.replaceAll("\\s+","%20"));
         request.append("&redirects"); //added to check not only direct queries but also redirects
-        request.append("&prop=info|links|langlinks|pageprops&formatversion=2&lllimit=500&llprop=url&inprop=url&format=json");
+        request.append("&prop=info|links|langlinks|pageprops&formatversion=2&lllimit=500&pllimit=500&llprop=url&inprop=url&format=json");
         return new URL(request.toString());
     }
+
 }
