@@ -99,17 +99,18 @@
                        ng-model="sensdu.sourceWord" required/>
 
         </div>
+        <p></p>
         <div class="col-md-6">
-            <p></p>
-                <div class="form-group">
+            <textarea rows="4" ng-show="sensdu.state == 'error'"
+                      class="form-control" readonly>Can't translate such combination as it's not written on Wikipedia.
+            </textarea>
+
+            <div class="form-group">
                     <textarea ng-hide="sensdu.state == 'error'" rows="4"
                           class="form-control" readonly>{{sensdu.translatedWord}}
                     </textarea>
                 </div>
 
-            <textarea rows="4" ng-show="sensdu.state == 'error'"
-                      class="form-control" readonly>There is no possibility to translate the requested word into the selected language using Wikipedia. Try other word.
-            </textarea>
 
         </div>
     </div>

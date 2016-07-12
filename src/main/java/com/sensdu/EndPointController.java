@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @org.springframework.web.bind.annotation.RestController
-public class RestControllers {
+public class EndPointController {
 
     @RequestMapping(value="/resource")
     public ResponseEntity<Map<String, Object>> setData(@RequestBody SensduCore sensdu) {

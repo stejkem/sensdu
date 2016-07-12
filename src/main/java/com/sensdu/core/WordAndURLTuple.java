@@ -1,4 +1,4 @@
-package com.sensdu.requesters;
+package com.sensdu.core;
 
 public class WordAndURLTuple {
 
