@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -91,15 +95,32 @@ public class SensduCore {
             answerFromWebSite.append(inputLine);
         }
 
-        isDisambiguationArticle = answerFromWebSite.toString().contains("disambiguation");
+        isDisambiguationArticle = answerFromWebSite.toString().contains("\"disambiguation\":");
 
         Object jsonDocument = Configuration.defaultConfiguration().jsonProvider().parse(answerFromWebSite.toString());
         List<String> langsKey = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].lang");
         List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
         List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
         List<String> wordURLs = JsonPath.read(jsonDocument, "$.query.pages[*].fullurl");
-        searchSuggestion = JsonPath.read(jsonDocument, "$.query.pages[*].links[*].title");
         wordURL = wordURLs.get(0);
+
+        // New block on links
+        searchSuggestion = new ArrayList<>();
+        Document doc = Jsoup.connect(wordURL).get();
+        Elements links = doc.select("li > a[href], i > a[href]");
+        for (Element currentLink : links) {
+            if(!currentLink.attr("title").equals("") &&
+                    !currentLink.attr("title").contains("[z]") &&
+                    currentLink.attr("href").contains("/wiki/") &&
+                    !currentLink.attr("href").contains(":") &&
+                    !currentLink.attr("class").equals("new") &&
+                    !currentLink.attr("class").equals("image") &&
+                    !currentLink.attr("class").equals("external text")
+                    ) {
+                searchSuggestion.add(currentLink.attr("title"));
+            }
+        }
+        // End of block
 
         Iterator<String> langsKeyIter = langsKey.iterator();
         Iterator<String> wordValuesIter = wordValues.iterator();

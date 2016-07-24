@@ -30,7 +30,7 @@ public class EndPointController {
                     model.put("fromLanguage", sensdu.getFromLanguage());
                     model.put("wordURL", sensdu.getSourceWordlURL());
                 } catch (NullPointerException e) {
-                    if (!sensdu.getState().equals("ambiguousArticle")) {
+                    if (!sensdu.getState().equals("ambiguousArticle") && sensdu.getSourceWordSearchSuggestion().size() != 0) {
                         model.put("wordSuggestion", sensdu.getSourceWordSearchSuggestion());
                         model.put("toLanguage", sensdu.getToLanguage());
                         model.put("fromLanguage", sensdu.getFromLanguage());
