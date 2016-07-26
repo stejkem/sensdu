@@ -91,9 +91,13 @@
         <div class="col-md-6">
             <p></p>
                     <select class="form-control inputPad" ng-show="sensdu.state == 'ambiguousArticle'" ng-model="sensdu.sourceWord"
-                         ng-options="o for o in sensdu.wordSuggestion">
-                         <option style="display:none" value="">Please, specify your request</option>
+                         ng-options="o for o in sensdu.wordSuggestion" autofocus>
+                         <option style="display:none" value="">
+                                Several articles are available.
+                                Please, specify...
+                         </option>
                     </select>
+
                     <input class="form-control inputPad" ng-hide="sensdu.state == 'ambiguousArticle'" id="wordInput"
                        placeholder="Enter the word for translation" ng-change="partialReset()"
                        ng-model="sensdu.sourceWord" required/>
@@ -134,6 +138,7 @@
     <!--<pre>-->
         <!--{{sensdu}}-->
         <!--{{formHelper}}-->
+        <!--{{select}-->
     <!--</pre>-->
 
 </form>
