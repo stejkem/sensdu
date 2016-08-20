@@ -1,16 +1,15 @@
-package com.sensdu;
+package com.sensdu.web.rest;
 
 import com.sensdu.core.SensduCore;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Null;
 import java.util.HashMap;
 import java.util.Map;
 
-@org.springframework.web.bind.annotation.RestController
-public class EndPointController {
+@RestController
+public class SensduResource {
 
     @RequestMapping(value="/resource")
     public ResponseEntity<Map<String, Object>> setData(@RequestBody SensduCore sensdu) {
