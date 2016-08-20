@@ -33,6 +33,10 @@ dependencies {
     compile 'org.jsoup:jsoup:1.9.2'
 }
 
+task stage {
+    dependsOn clean, build
+}
+
 task copyNodeModules(type: Copy) {
     from 'node_modules'
     into 'build/resources/main/static/node_modules'
