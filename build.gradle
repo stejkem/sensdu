@@ -1,40 +1,119 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.6"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+        classpath "org.springframework.build.gradle:propdeps-plugin:0.0.7"
+        classpath "com.moowork.gradle:gradle-node-plugin:0.12"
+        classpath "com.moowork.gradle:gradle-gulp-plugin:0.12"
+        classpath "se.transmode.gradle:gradle-docker:1.2"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+    }
+}
+
 apply plugin: 'java'
-//apply plugin: 'war'
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+apply plugin: 'war'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
+/* downgrade Hibernate to 4.3 */
+ext['hibernate.version'] = '${hibernate_entitymanager_version}'
+defaultTasks 'bootRun'
+
+bootRepackage {
+    mainClass = 'com.sensdu.web.SensduApp'
+}
+
+springBoot {
+    mainClass = 'com.sensdu.web.SensduApp'
+    executable = true
+}
+
+bootRun {
+    addResources = false
+}
 
 group = 'com.sensdu'
 version = '1.0'
 
 description = """"""
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
 repositories {
+    mavenLocal()
     mavenCentral()
+    jcenter()
+    maven { url 'http://repo.spring.io/milestone' }
+    maven { url 'http://repo.spring.io/snapshot' }
+    maven { url 'https://repository.jboss.org/nexus/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'http://repo.maven.apache.org/maven2' }
 }
 
 dependencies {
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.5.RELEASE') {
-        exclude module: "spring-boot-starter-tomcat"
+
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-json-org:${jackson_version}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-hppc:${jackson_version}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson_version}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate4"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
+    compile("com.ryantenney.metrics:metrics-spring:${metrics_spring_version}") {
+        exclude(module: 'metrics-core')
+        exclude(module: 'metrics-healthchecks')
     }
 
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.54'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '7.0.54'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.54'
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '7.0.54'
+    compile "org.hibernate:hibernate-core:${hibernate_entitymanager_version}"
+    compile "javax.inject:javax.inject:${javax_inject_version}"
+    compile "javax.transaction:javax.transaction-api"
+    compile "org.hibernate:hibernate-envers"
+    compile "org.hibernate:hibernate-validator"
+//    compile("org.liquibase:liquibase-core:${liquibase_core_version}") {
+//        exclude(module: 'jetty-servlet')
+//    }
 
-    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.2.0'
+//    compile "com.mattbertolini:liquibase-slf4j:${liquibase_slf4j_version}"
+    compile "org.springframework.boot:spring-boot-actuator"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.springframework.boot:spring-boot-loader-tools"
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-starter-aop"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
 
-    // https://mvnrepository.com/artifact/javax.persistence/persistence-api
-    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    compile ("org.springframework.boot:spring-boot-starter-web") {
+//        exclude module: "spring-boot-starter-tomcat"
+    }
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '7.0.54'
+//    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-el', version: '7.0.54'
+//    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '7.0.54'
+//    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '7.0.54'
+
+    compile "org.springframework.boot:spring-boot-configuration-processor:${spring_boot_version}"
+
+    compile "mysql:mysql-connector-java"
 
     compile 'org.jsoup:jsoup:1.9.2'
+
+    compile "com.h2database:h2"
+    compile "com.jayway.jsonpath:json-path"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
 }
 
+
 task stage {
-    dependsOn clean, build
+    dependsOn clean, build, bootRepackage
 }
 
 task copyNodeModules(type: Copy) {
@@ -44,16 +123,5 @@ task copyNodeModules(type: Copy) {
 
 assemble.dependsOn copyNodeModules
 
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-
-    dependencies {
-        classpath "com.moowork.gradle:gradle-node-plugin:0.12"
-    }
-}
 
 apply plugin: 'com.moowork.node'
