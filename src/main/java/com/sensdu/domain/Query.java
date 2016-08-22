@@ -27,7 +27,7 @@ public class Query implements Serializable {
     private String query;
 
     @NotNull
-    @Column(name = "queryWikiURL", nullable = false)
+    @Column(name = "query_wiki_url", nullable = false)
     private String queryWikiURL;
 
     @NotNull
@@ -35,7 +35,7 @@ public class Query implements Serializable {
     private String translation;
 
     @NotNull
-    @Column(name = "translationWikiURL", nullable = false)
+    @Column(name = "translation_wiki_url", nullable = false)
     private String translationWikiURL;
 
     public Long getId() {
