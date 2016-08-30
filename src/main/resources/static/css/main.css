@@ -79,3 +79,15 @@ html,
         font-size: 160%;
     }
 
+    .inputPad {
+       margin-top: 15px;
+    }
+
+    .leftPad {
+        margin-bottom: 15px;
+    }
+
+    .additionalSpace {
+        margin-bottom: 15px;
+    }
+

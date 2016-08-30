@@ -29,51 +29,51 @@ public class QueryResource {
     @Inject
     private QueryRepository queryRepository;
 
-    /**
-     * POST  /queries : Save a user's query to the database
-     *
-     * @param query save user's query to the database
-     * @return the ResponseEntity with status 201 (Created) and with body the new query, or with status 400 (Bad Request) if the query has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/queries",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Query> createQuery(@Valid @RequestBody Query query) throws URISyntaxException {
-        log.debug("REST request to save Query : {}", query);
-        if (query.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("query", "idexists", "A new query cannot already have an ID")).body(null);
-        }
-        Query result = queryRepository.save(query);
-        return ResponseEntity.created(new URI("/api/queries/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("query", result.getId().toString()))
-                .body(result);
-    }
+//    /**
+//     * POST  /queries : Save a user's query to the database
+//     *
+//     * @param query save user's query to the database
+//     * @return the ResponseEntity with status 201 (Created) and with body the new query, or with status 400 (Bad Request) if the query has already an ID
+//     * @throws URISyntaxException if the Location URI syntax is incorrect
+//     */
+//    @RequestMapping(value = "/queries",
+//            method = RequestMethod.POST,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public ResponseEntity<Query> createQuery(@Valid @RequestBody Query query) throws URISyntaxException {
+//        log.debug("REST request to save Query : {}", query);
+//        if (query.getId() != null) {
+//            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("query", "idexists", "A new query cannot already have an ID")).body(null);
+//        }
+//        Query result = queryRepository.save(query);
+//        return ResponseEntity.created(new URI("/api/queries/" + result.getId()))
+//                .headers(HeaderUtil.createEntityCreationAlert("query", result.getId().toString()))
+//                .body(result);
+//    }
 
-    /**
-     * PUT  /queries : Updates an existing query.
-     *
-     * @param query the query to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated query,
-     * or with status 400 (Bad Request) if the query is not valid,
-     * or with status 500 (Internal Server Error) if the query couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @RequestMapping(value = "/queries",
-            method = RequestMethod.PUT,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Query> updateQuery(@Valid @RequestBody Query query) throws URISyntaxException {
-        log.debug("REST request to update Query : {}", query);
-        if (query.getId() == null) {
-            return createQuery(query);
-        }
-        Query result = queryRepository.save(query);
-        return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("query", query.getId().toString()))
-                .body(result);
-    }
+//    /**
+//     * PUT  /queries : Updates an existing query.
+//     *
+//     * @param query the query to update
+//     * @return the ResponseEntity with status 200 (OK) and with body the updated query,
+//     * or with status 400 (Bad Request) if the query is not valid,
+//     * or with status 500 (Internal Server Error) if the query couldnt be updated
+//     * @throws URISyntaxException if the Location URI syntax is incorrect
+//     */
+//    @RequestMapping(value = "/queries",
+//            method = RequestMethod.PUT,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public ResponseEntity<Query> updateQuery(@Valid @RequestBody Query query) throws URISyntaxException {
+//        log.debug("REST request to update Query : {}", query);
+//        if (query.getId() == null) {
+//            return createQuery(query);
+//        }
+//        Query result = queryRepository.save(query);
+//        return ResponseEntity.ok()
+//                .headers(HeaderUtil.createEntityUpdateAlert("query", query.getId().toString()))
+//                .body(result);
+//    }
 
     /**
      * GET  /queries : get all the queries.
@@ -90,41 +90,41 @@ public class QueryResource {
         return queries;
     }
 
-    /**
-     * GET  /queries/:id : get the "id" query.
-     *
-     * @param id the id of the query to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the query, or with status 404 (Not Found)
-     */
-    @RequestMapping(value = "/queries/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Query> getQuery(@PathVariable Long id) {
-        log.debug("REST request to get Query : {}", id);
-        Query query = queryRepository.findOne(id);
-        if (!(query == null)) {
-            return new ResponseEntity<>(query, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    /**
-     * DELETE  /queries/:id : delete the "id" query.
-     *
-     * @param id the id of the query to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
-    @RequestMapping(value = "/queries/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<Void> deleteQuery(@PathVariable Long id) {
-        log.debug("REST request to delete Query : {}", id);
-        queryRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("query", id.toString())).build();
-    }
+//    /**
+//     * GET  /queries/:id : get the "id" query.
+//     *
+//     * @param id the id of the query to retrieve
+//     * @return the ResponseEntity with status 200 (OK) and with body the query, or with status 404 (Not Found)
+//     */
+//    @RequestMapping(value = "/queries/{id}",
+//            method = RequestMethod.GET,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public ResponseEntity<Query> getQuery(@PathVariable Long id) {
+//        log.debug("REST request to get Query : {}", id);
+//        Query query = queryRepository.findOne(id);
+//        if (!(query == null)) {
+//            return new ResponseEntity<>(query, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
+//
+//    /**
+//     * DELETE  /queries/:id : delete the "id" query.
+//     *
+//     * @param id the id of the query to delete
+//     * @return the ResponseEntity with status 200 (OK)
+//     */
+//    @RequestMapping(value = "/queries/{id}",
+//            method = RequestMethod.DELETE,
+//            produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public ResponseEntity<Void> deleteQuery(@PathVariable Long id) {
+//        log.debug("REST request to delete Query : {}", id);
+//        queryRepository.delete(id);
+//        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("query", id.toString())).build();
+//    }
 
 }
 

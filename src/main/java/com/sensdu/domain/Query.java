@@ -23,6 +23,30 @@ public class Query implements Serializable {
     private Date date;
 
     @NotNull
+    @Column(name = "from", nullable = false)
+    private String from;
+
+    @NotNull
+    @Column(name = "to", nullable = false)
+    private String to;
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    @NotNull
     @Column(name = "query", nullable = false)
     private String query;
 

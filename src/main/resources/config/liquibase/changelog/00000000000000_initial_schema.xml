@@ -24,6 +24,12 @@
             <column name="date" type="timestamp" defaultValueDate="${now}">
                 <constraints nullable="true"/>
             </column>
+            <column name="from" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
             <column name="query" type="varchar(60)">
                 <constraints nullable="false"/>
             </column>

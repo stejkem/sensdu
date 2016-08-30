@@ -4,19 +4,19 @@
                 <p>&nbsp</p>
                 <strong><p>From:</p></strong>
                 <div class="btn-group" ng-click="validateLanguagesInFromGroup()" >
-                    <label class="btn btn-raised btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
+                    <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
                         Ukrainian
                     </label>
-                    <label class="btn btn-raised btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
+                    <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
                         English
                     </label>
-                    <label class="btn btn-raised btn-default"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
+                    <label class="btn btn-raised btn-default btn-sm"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
                         {{formHelper.fromLanguage}}
                     </label>
 
                     <!-- Single dropdown button -->
                     <div class="btn-group" uib-dropdown keyboard-nav>
-                        <button id="single-button-from" type="button" class="btn btn-raised btn-default" uib-dropdown-toggle  ng-disabled="disabled">
+                        <button id="single-button-from btn-sm" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle  ng-disabled="disabled">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-from">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-            <button type="button" id="swapLanguages" class="btn btn-default"
+            <button type="button" id="swapLanguages" class="btn btn-default btn-sm"
                     ng-click="swapLanguages()" aria-label="Swap languages">
                 <i class="material-icons">loop</i>
             </button>
@@ -50,19 +50,19 @@
             <p>&nbsp</p>
             <strong><p>To:</p></strong>
             <div class="btn-group"  ng-click="validateLanguagesInToGroup()">
-                <label class="btn btn-raised btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" >
+                <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" >
                     English
                 </label>
-                <label class="btn btn-raised btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" >
+                <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" >
                     Ukrainian
                 </label>
-                <label class="btn btn-raised btn-default"  ng-model="sensdu.toLanguage" uib-btn-radio="formHelper.toLanguageCode" >
+                <label class="btn btn-raised btn-default btn-sm"  ng-model="sensdu.toLanguage" uib-btn-radio="formHelper.toLanguageCode" >
                     {{formHelper.toLanguage}}
                 </label>
 
                 <!-- Single dropdown button -->
                 <div class="btn-group" uib-dropdown keyboard-nav>
-                    <button id="single-button-to" type="button" class="btn btn-raised btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                    <button id="single-button-to" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-to">
@@ -89,58 +89,54 @@
 
     <div class="row">
         <div class="col-md-6">
-            <p></p>
-                    <select class="form-control inputPad" ng-show="sensdu.state == 'ambiguousArticle'" ng-model="sensdu.sourceWord"
-                         ng-options="o for o in sensdu.wordSuggestion" autofocus>
-                         <option style="display:none" value="">
-                                Several articles are available.
-                                Please, specify...
-                         </option>
-                    </select>
-                    <div class="form-group label-floating">
+                    <div class="form-group has-warning additionalSpace" ng-show="sensdu.state == 'ambiguousArticle'">
+                        <select class="form-control" ng-model="sensdu.sourceWord"
+                             ng-options="o for o in sensdu.wordSuggestion" id="selectLot" autofocus>
+                             <option style="display:none" value="">
+                                    Several articles are available. Please, specify &#9661
+                             </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group label-floating leftPad" ng-hide="sensdu.state == 'ambiguousArticle'">
                         <label class="control-label" for="wordInput">Enter the word for translation</label>
-                        <input class="form-control" ng-hide="sensdu.state == 'ambiguousArticle'" id="wordInput"
+                        <input class="form-control" id="wordInput"
                             ng-change="partialReset()" ng-model="sensdu.sourceWord" required/>
                     </div>
 
-
         </div>
-        <p></p>
+
         <div class="col-md-6">
-            <textarea rows="4" ng-show="sensdu.state == 'error'"
-                      class="form-control" readonly>Can't translate your word as no connected articles matching to your input were identified. Try another word!
-            </textarea>
-
-            <div class="form-group">
-                    <textarea ng-hide="sensdu.state == 'error'" rows="4"
-                          class="form-control" readonly>{{sensdu.translatedWord}}
-                    </textarea>
+            <div class="panel panel-default inputPad" ng-hide="sensdu.translatedWord == null">
+                <div class="panel-body">
+                    {{sensdu.translatedWord}}
                 </div>
-
-
+            </div>
         </div>
     </div>
 
+    <p class="text-warning" ng-show="sensdu.state == 'error'">
+        Can't translate as no connected articles matching to your input were identified. Try another word!
+    </p>
+    <p ng-hide="sensdu.state == 'error'">&nbsp</p>
     <div class="row">
         <div class="col-md-6">
             <p></p>
             <p ng-show="sensdu.wordURL == null">&nbsp</p>
-            <p ng-hide="sensdu.wordURL == null"><a ng-href="{{sensdu.wordURL}}">read the article on Wikipedia</a></p>
+            <p ng-hide="sensdu.wordURL == null"><a ng-href="{{sensdu.wordURL}}">read about your word on Wikipedia</a></p>
         </div>
         <div class="col-md-6">
             <p></p>
             <p ng-show="sensdu.translatedWordURL == null">&nbsp</p>
-            <p ng-hide="sensdu.translatedWordURL == null"><a ng-href="{{sensdu.translatedWordURL}}">read the article on Wikipedia</a></p>
+            <p ng-hide="sensdu.translatedWordURL == null"><a ng-href="{{sensdu.translatedWordURL}}">read about translated word on Wikipedia</a></p>
         </div>
     </div>
 
-    <p></p>
+    <p>&nbsp</p>
     <button type="submit" class="btn btn-raised btn-primary">Translate</button>
     <button type="reset"  class="btn btn-raised btn-warning" ng-click="reset()">Reset</button>
     <!--<pre>-->
         <!--{{sensdu}}-->
         <!--{{formHelper}}-->
-        <!--{{select}-->
     <!--</pre>-->
-
 </form>
