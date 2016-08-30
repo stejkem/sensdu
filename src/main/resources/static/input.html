@@ -4,19 +4,19 @@
                 <p>&nbsp</p>
                 <strong><p>From:</p></strong>
                 <div class="btn-group" ng-click="validateLanguagesInFromGroup()" >
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
+                    <label class="btn btn-raised btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
                         Ukrainian
                     </label>
-                    <label class="btn btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
+                    <label class="btn btn-raised btn-default" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
                         English
                     </label>
-                    <label class="btn btn-default"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
+                    <label class="btn btn-raised btn-default"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
                         {{formHelper.fromLanguage}}
                     </label>
 
                     <!-- Single dropdown button -->
                     <div class="btn-group" uib-dropdown keyboard-nav>
-                        <button id="single-button-from" type="button" class="btn btn-default" uib-dropdown-toggle  ng-disabled="disabled">
+                        <button id="single-button-from" type="button" class="btn btn-raised btn-default" uib-dropdown-toggle  ng-disabled="disabled">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-from">
@@ -41,7 +41,7 @@
 
             <button type="button" id="swapLanguages" class="btn btn-default"
                     ng-click="swapLanguages()" aria-label="Swap languages">
-                <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+                <i class="material-icons">loop</i>
             </button>
 
         </div>
@@ -50,19 +50,19 @@
             <p>&nbsp</p>
             <strong><p>To:</p></strong>
             <div class="btn-group"  ng-click="validateLanguagesInToGroup()">
-                <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" >
+                <label class="btn btn-raised btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'en'" >
                     English
                 </label>
-                <label class="btn btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" >
+                <label class="btn btn-raised btn-default" ng-model="sensdu.toLanguage" uib-btn-radio="'uk'" >
                     Ukrainian
                 </label>
-                <label class="btn btn-default"  ng-model="sensdu.toLanguage" uib-btn-radio="formHelper.toLanguageCode" >
+                <label class="btn btn-raised btn-default"  ng-model="sensdu.toLanguage" uib-btn-radio="formHelper.toLanguageCode" >
                     {{formHelper.toLanguage}}
                 </label>
 
                 <!-- Single dropdown button -->
                 <div class="btn-group" uib-dropdown keyboard-nav>
-                    <button id="single-button-to" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                    <button id="single-button-to" type="button" class="btn btn-raised btn-default" uib-dropdown-toggle ng-disabled="disabled">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-to">
@@ -97,10 +97,12 @@
                                 Please, specify...
                          </option>
                     </select>
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="wordInput">Enter the word for translation</label>
+                        <input class="form-control" ng-hide="sensdu.state == 'ambiguousArticle'" id="wordInput"
+                            ng-change="partialReset()" ng-model="sensdu.sourceWord" required/>
+                    </div>
 
-                    <input class="form-control inputPad" ng-hide="sensdu.state == 'ambiguousArticle'" id="wordInput"
-                       placeholder="Enter the word for translation" ng-change="partialReset()"
-                       ng-model="sensdu.sourceWord" required/>
 
         </div>
         <p></p>
@@ -133,8 +135,8 @@
     </div>
 
     <p></p>
-    <button type="submit" class="btn btn-success">Translate</button>
-    <button type="reset"  class="btn btn-danger" ng-click="reset()">Reset</button>
+    <button type="submit" class="btn btn-raised btn-primary">Translate</button>
+    <button type="reset"  class="btn btn-raised btn-warning" ng-click="reset()">Reset</button>
     <!--<pre>-->
         <!--{{sensdu}}-->
         <!--{{formHelper}}-->
