@@ -115,10 +115,23 @@
         </div>
     </div>
 
-    <p class="text-warning" ng-show="sensdu.state == 'error'">
-        Can't translate as no connected articles matching to your input were identified. Try another word!
-    </p>
-    <p ng-hide="sensdu.state == 'error'">&nbsp</p>
+    <div class="text-info" ng-show="sensdu.state != 'initiated' &&
+         sensdu.state != 'ambiguousArticle' &&
+         sensdu.sourceWord != null &&
+         sensdu.translatedWord == null">
+        There is no possibility to translate this word as no connected articles matching to your input were identified.
+    </div>
+    <div class="text-info" ng-hide="sensdu.state != 'initiated' &&
+         sensdu.state != 'ambiguousArticle' &&
+         sensdu.sourceWord != null &&
+         sensdu.translatedWord == null">
+        &nbsp
+    </div>
+
+    <div class="text-warning" ng-show="sensdu.state == 'error'">
+        Can't find such word on Wikipedia. Try another word!
+    </div>
+    <div ng-hide="sensdu.state == 'error'">&nbsp</div>
     <div class="row">
         <div class="col-md-6">
             <p></p>
