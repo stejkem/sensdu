@@ -74,13 +74,7 @@ html,
         overflow: hidden;
     }
 
-    .inputPad {
-        padding-bottom: 65px;
-    }
 
-    .form-control {
-        height: 93px;
-    }
 
     .container {
         max-width: 60%;
@@ -90,5 +84,17 @@ html,
         color:inherit;
         text-decoration: none;
         font-size: 150%;
+    }
+
+    .inputPad {
+       margin-top: 15px;
+    }
+
+    .leftPad {
+        margin-bottom: 15px;
+    }
+
+    .additionalSpace {
+        margin-bottom: 15px;
     }
 
