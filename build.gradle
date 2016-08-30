@@ -1,5 +1,5 @@
 apply plugin: 'java'
-//apply plugin: 'war'
+apply plugin: 'war'
 
 group = 'com.sensdu'
 version = '1.0'
