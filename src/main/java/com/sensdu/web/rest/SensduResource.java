@@ -37,14 +37,6 @@ public class SensduResource {
                     model.put("toLanguage", sensdu.getToLanguage());
                     model.put("fromLanguage", sensdu.getFromLanguage());
                     model.put("wordURL", sensdu.getSourceWordlURL());
-//                    Query query = new Query();
-//                    query.setQuery(sensdu.getSourceWord());
-//                    query.setTo(sensdu.getToLanguage());
-//                    query.setFrom(sensdu.getFromLanguage());
-//                    query.setQueryWikiURL(sensdu.getSourceWordlURL());
-//                    query.setTranslation(sensdu.getTranslatedWord());
-//                    query.setTranslationWikiURL(sensdu.getTranslatedWordURL());
-//                    queryRepository.save(query);
 
                 } catch (NullPointerException e) {
                     if (!sensdu.getState().equals("ambiguousArticle") && sensdu.getSourceWordSearchSuggestion().size() != 0) {
@@ -53,7 +45,9 @@ public class SensduResource {
                         model.put("fromLanguage", sensdu.getFromLanguage());
                         model.put("state", "ambiguousArticle");
                     } else {
-                        throw new NullPointerException();
+                        model.put("toLanguage", sensdu.getToLanguage());
+                        model.put("fromLanguage", sensdu.getFromLanguage());
+                        model.put("wordURL", sensdu.getSourceWordlURL());
                     }
                 }
             }
