@@ -32,6 +32,7 @@
         $scope.formSubmit = function() {
             $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                 $scope.sensdu = response.data;
+                $scope.sensdu.rememberSourceWord = response.data.sourceWord;
             },
             function errorCallback(response) {
                 $scope.sensdu.sourceWord = null;
@@ -61,6 +62,7 @@
             $scope.sensdu.wordURL = null;
             $scope.sensdu.translatedWord = null;
             $scope.sensdu.translatedWordURL = null;
+            $scope.sensdu.rememberSourceWord = null;
         }
 
         $scope.swapLanguages = function() {

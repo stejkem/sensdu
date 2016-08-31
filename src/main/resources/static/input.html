@@ -101,7 +101,9 @@
                     <div class="form-group label-floating leftPad" ng-hide="sensdu.state == 'ambiguousArticle'">
                         <label class="control-label" for="wordInput">Enter the word for translation</label>
                         <input class="form-control" id="wordInput"
-                            ng-change="partialReset()" ng-model="sensdu.sourceWord" required/>
+                            ng-change="partialReset()" ng-model="sensdu.sourceWord"
+                               placeholder="{{sensdu.rememberSourceWord}}" required>
+
                     </div>
 
         </div>
