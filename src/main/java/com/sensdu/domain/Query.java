@@ -2,6 +2,7 @@ package com.sensdu.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -15,12 +16,14 @@ public class Query implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    @Nullable
-//    @Column(name = "date")
-//    private LocalDate date;
+    @Column(name = "date")
+    private Timestamp date;
 
     @Column(name = "user_agent")
     private String userAgent;
+
+    @Column(name = "search_routine")
+    private String searchRoutine;
 
     @Column(name = "from_language")
     private String fromLanguage;
@@ -48,13 +51,13 @@ public class Query implements Serializable {
         this.id = id;
     }
 
-//    public LocalDate getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(LocalDate date) {
-//        this.date = date;
-//    }
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
 
     public String getUserAgent() {
         return userAgent;
@@ -62,6 +65,18 @@ public class Query implements Serializable {
 
     public void setUserAget(String userAgent) {
         this.userAgent = userAgent;
+    }
+
+    public String getSearchRountie() {
+        return searchRoutine;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    public void setSearchRoutine(String searchRoutine) {
+        this.searchRoutine = searchRoutine;
     }
 
     public String getFromLanguage() {

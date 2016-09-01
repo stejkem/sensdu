@@ -1,43 +1,43 @@
 <form role="form" name="mainInput" id="mainInput" ng-submit="formSubmit()" method="post">
     <div class="row">
         <div class="col-md-6">
-                <p>&nbsp</p>
-                <strong><p>From:</p></strong>
-                <div class="btn-group" ng-click="validateLanguagesInFromGroup()" >
-                    <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
-                        Ukrainian
-                    </label>
-                    <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
-                        English
-                    </label>
-                    <label class="btn btn-raised btn-default btn-sm"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
-                        {{formHelper.fromLanguage}}
-                    </label>
+            <p>&nbsp</p>
+            <strong><p>From:</p></strong>
+            <div class="btn-group" ng-click="validateLanguagesInFromGroup()" >
+                <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'uk'" >
+                    Ukrainian
+                </label>
+                <label class="btn btn-raised btn-default btn-sm" ng-model="sensdu.fromLanguage" uib-btn-radio="'en'" >
+                    English
+                </label>
+                <label class="btn btn-raised btn-default btn-sm"  ng-model="sensdu.fromLanguage" uib-btn-radio="formHelper.fromLanguageCode" >
+                    {{formHelper.fromLanguage}}
+                </label>
 
-                    <!-- Single dropdown button -->
-                    <div class="btn-group" uib-dropdown keyboard-nav>
-                        <button id="single-button-fromLanguage btn-sm" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle  ng-disabled="disabled">
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-fromLanguage">
-                            <li role="menuitem">
-                                <a href="#" ng-click="changeLanguageInFromGroup('ru', 'Russian')">Russian</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('sv', 'Swedish')">Swedish</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('de', 'German')">German</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('nl', 'Dutch')">Dutch</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('fr', 'French')">French</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('it', 'Italian')">Italian</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('es', 'Spanish')">Spanish</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('pl', 'Polish')">Polish</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('ja', 'Japanese')">Japanese</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('zh', 'Chinese')">Chinese</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('tr', 'Turkish')">Turkish</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('ko', 'Korean')">Korean</a>
-                                <a href="#" ng-click="changeLanguageInFromGroup('ka', 'Georgian')">Georgian</a>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- Single dropdown button -->
+                <div class="btn-group" uib-dropdown keyboard-nav>
+                    <button id="single-button-from btn-sm" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle  ng-disabled="disabled">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-from">
+                        <li role="menuitem">
+                            <a href="#" ng-click="changeLanguageInFromGroup('ru', 'Russian')">Russian</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('sv', 'Swedish')">Swedish</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('de', 'German')">German</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('nl', 'Dutch')">Dutch</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('fr', 'French')">French</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('it', 'Italian')">Italian</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('es', 'Spanish')">Spanish</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('pl', 'Polish')">Polish</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('ja', 'Japanese')">Japanese</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('zh', 'Chinese')">Chinese</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('tr', 'Turkish')">Turkish</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('ko', 'Korean')">Korean</a>
+                            <a href="#" ng-click="changeLanguageInFromGroup('ka', 'Georgian')">Georgian</a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
             <button type="button" id="swapLanguages" class="btn btn-default btn-sm"
                     ng-click="swapLanguages()" aria-label="Swap languages">
@@ -62,10 +62,10 @@
 
                 <!-- Single dropdown button -->
                 <div class="btn-group" uib-dropdown keyboard-nav>
-                    <button id="single-button-toLanguage" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled">
+                    <button id="single-button-to" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled">
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-toLanguage">
+                    <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-to">
                         <li role="menuitem">
                             <a href="#" ng-click="changeLanguageInToGroup('ru', 'Russian')">Russian</a>
                             <a href="#" ng-click="changeLanguageInToGroup('sv', 'Swedish')">Swedish</a>
@@ -89,22 +89,22 @@
 
     <div class="row">
         <div class="col-md-6">
-                    <div class="form-group has-warning additionalSpace" ng-show="sensdu.state == 'ambiguousArticle'">
-                        <select class="form-control" ng-model="sensdu.sourceWord"
-                             ng-options="o for o in sensdu.wordSuggestion" id="selectLot" autofocus>
-                             <option style="display:none" value="">
-                                    Several articles are available. Please, specify &#9661
-                             </option>
-                        </select>
-                    </div>
+            <div class="form-group has-warning additionalSpace" ng-show="sensdu.state == 'ambiguousArticle'">
+                <select class="form-control" ng-model="sensdu.sourceWord"
+                        ng-options="o for o in sensdu.wordSuggestion" id="selectLot" autofocus>
+                    <option style="display:none" value="">
+                        Several articles are available. Please, specify &#9661
+                    </option>
+                </select>
+            </div>
 
-                    <div class="form-group label-floating leftPad" ng-hide="sensdu.state == 'ambiguousArticle'">
-                        <label class="control-label" for="wordInput">Enter the word for translation</label>
-                        <input class="form-control" id="wordInput"
-                            ng-change="partialReset()" ng-model="sensdu.sourceWord"
-                               placeholder="{{sensdu.rememberSourceWord}}" required>
+            <div class="form-group label-floating leftPad" ng-hide="sensdu.state == 'ambiguousArticle'">
+                <label class="control-label" for="wordInput">Enter the word for translation</label>
+                <input class="form-control" id="wordInput"
+                       ng-change="partialReset()" ng-model="sensdu.sourceWord"
+                       placeholder="{{sensdu.rememberSourceWord}}" required>
 
-                    </div>
+            </div>
 
         </div>
 
@@ -119,13 +119,13 @@
 
     <div class="text-info" ng-show="sensdu.state != 'initiated' &&
          sensdu.state != 'ambiguousArticle' &&
-         sensdu.sourceWord != null &&
+         sensdu.rememberSourceWord != null &&
          sensdu.translatedWord == null">
-        There is no possibility toLanguage translate this word as no connected articles matching toLanguage your input were identified.
+        There is no possibility to translate this word as no connected articles matching to your input were identified. Try another word!
     </div>
     <div class="text-info" ng-hide="sensdu.state != 'initiated' &&
          sensdu.state != 'ambiguousArticle' &&
-         sensdu.sourceWord != null &&
+         sensdu.rememberSourceWord != null &&
          sensdu.translatedWord == null">
         &nbsp
     </div>
@@ -137,8 +137,8 @@
     <div class="row">
         <div class="col-md-6">
             <p></p>
-            <p ng-show="sensdu.wordURL == null">&nbsp</p>
-            <p ng-hide="sensdu.wordURL == null"><a ng-href="{{sensdu.wordURL}}">read about your word on Wikipedia</a></p>
+            <p ng-show="sensdu.wordURL == null || sensdu.wordSuggestion != null">&nbsp</p>
+            <p ng-hide="sensdu.wordURL == null || sensdu.wordSuggestion != null"><a ng-href="{{sensdu.wordURL}}">read about your word on Wikipedia</a></p>
         </div>
         <div class="col-md-6">
             <p></p>

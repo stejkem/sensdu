@@ -22,6 +22,7 @@
         $scope.sensdu.state = "initiated";
         $scope.sensdu.fromLanguage = 'uk';
         $scope.sensdu.toLanguage = 'en';
+        $scope.sensdu.userAgent = navigator.appVersion;
 
         $scope.formHelper.fromLanguageCode = 'ru';
         $scope.formHelper.fromLanguage = 'Russian';
@@ -30,6 +31,7 @@
         $scope.formHelper.toLanguage = 'Russian';
 
         $scope.formSubmit = function() {
+            $scope.sensdu.userAgent = navigator.appVersion;
             $http.post('/resource', $scope.sensdu).then(function successCallback(response) {
                 $scope.sensdu = response.data;
                 $scope.sensdu.rememberSourceWord = response.data.sourceWord;

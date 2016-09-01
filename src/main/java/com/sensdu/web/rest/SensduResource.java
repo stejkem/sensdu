@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,28 +31,30 @@ public class SensduResource {
 
         Query userQuery = new Query();
         userQuery.setSourceWord(sensdu.getSourceWord());
-
-
-        userQuery.setToLanguage("to");
-        userQuery.setSourceWordWikiUrl("URL");
-        userQuery.setTranslatedWord("t");
-        userQuery.setTranslatedWordWikiUrl("t URL");
-        System.err.println("REST request to save Query : {}" + userQuery);
-        queryRepository.save(userQuery);
+        userQuery.setUserAgent(sensdu.getUserAgent());
+        Date date = new Date();
+        userQuery.setDate(new Timestamp(date.getTime()));
         try {
             if (sensdu.isDisambiguationArticle() && !sensdu.getState().equals("ambiguousArticle") ) {
                 model.put("wordSuggestion", sensdu.getSourceWordSearchSuggestion());
                 model.put("toLanguage", sensdu.getToLanguage());
-//                userQuery.setToLanguage(sensdu.getToLanguage());
                 model.put("fromLanguage", sensdu.getFromLanguage());
                 model.put("state", "ambiguousArticle");
             } else {
                 try {
+                    model.put("fromLanguage", sensdu.getFromLanguage());
+                    model.put("toLanguage", sensdu.getToLanguage());
+                    model.put("wordURL", sensdu.getSourceWordWikiUrl());
                     model.put("translatedWord", sensdu.getTranslatedWord());
                     model.put("translatedWordURL", sensdu.getTranslatedWordWikiUrl());
-                    model.put("toLanguage", sensdu.getToLanguage());
-                    model.put("fromLanguage", sensdu.getFromLanguage());
-                    model.put("wordURL", sensdu.getSourceWordWikiUrl());
+
+                    userQuery.setToLanguage(sensdu.getToLanguage());
+                    userQuery.setFromLanguage(sensdu.getFromLanguage());
+                    userQuery.setSourceWordWikiUrl(sensdu.getSourceWordWikiUrl());
+                    userQuery.setTranslatedWord(sensdu.getTranslatedWord());
+                    userQuery.setTranslatedWordWikiUrl(sensdu.getTranslatedWordWikiUrl());
+                    userQuery.setSearchRoutine("translated");
+                    queryRepository.save(userQuery);
 
                 } catch (NullPointerException e) {
                     if (!sensdu.getState().equals("ambiguousArticle") && sensdu.getSourceWordSearchSuggestion().size() != 0) {
@@ -62,12 +66,18 @@ public class SensduResource {
                         model.put("toLanguage", sensdu.getToLanguage());
                         model.put("fromLanguage", sensdu.getFromLanguage());
                         model.put("wordURL", sensdu.getSourceWordWikiUrl());
+                        userQuery.setToLanguage(sensdu.getToLanguage());
+                        userQuery.setFromLanguage(sensdu.getFromLanguage());
+                        userQuery.setSourceWordWikiUrl(sensdu.getSourceWordWikiUrl());
+                        userQuery.setSearchRoutine("no translation available");
+                        queryRepository.save(userQuery);
                     }
                 }
             }
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
+
         return ResponseEntity.ok(model);
     }
 

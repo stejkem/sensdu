@@ -34,6 +34,8 @@ public class SensduCore {
     private Boolean isDisambiguationArticle;
     private List<String> searchSuggestion;
 
+    private String userAgent;
+
     @JsonCreator
     public SensduCore(@JsonProperty("sourceWord") String sourceWord,
                       @JsonProperty("fromLanguage") String fromLanguage,
@@ -43,6 +45,14 @@ public class SensduCore {
         this.fromLanguage = fromLanguage.toLowerCase();
         this.toLanguage = toLanguage.toLowerCase();
         fillInObject();
+    }
+
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
     }
 
     public String getState() {
