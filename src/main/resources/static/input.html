@@ -16,10 +16,10 @@
 
                     <!-- Single dropdown button -->
                     <div class="btn-group" uib-dropdown keyboard-nav>
-                        <button id="single-button-from btn-sm" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle  ng-disabled="disabled">
+                        <button id="single-button-fromLanguage btn-sm" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle  ng-disabled="disabled">
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-from">
+                        <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-fromLanguage">
                             <li role="menuitem">
                                 <a href="#" ng-click="changeLanguageInFromGroup('ru', 'Russian')">Russian</a>
                                 <a href="#" ng-click="changeLanguageInFromGroup('sv', 'Swedish')">Swedish</a>
@@ -62,10 +62,10 @@
 
                 <!-- Single dropdown button -->
                 <div class="btn-group" uib-dropdown keyboard-nav>
-                    <button id="single-button-to" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled">
+                    <button id="single-button-toLanguage" type="button" class="btn btn-raised btn-default btn-sm" uib-dropdown-toggle ng-disabled="disabled">
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-to">
+                    <ul class="dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button-toLanguage">
                         <li role="menuitem">
                             <a href="#" ng-click="changeLanguageInToGroup('ru', 'Russian')">Russian</a>
                             <a href="#" ng-click="changeLanguageInToGroup('sv', 'Swedish')">Swedish</a>
@@ -119,7 +119,7 @@
          sensdu.state != 'ambiguousArticle' &&
          sensdu.sourceWord != null &&
          sensdu.translatedWord == null">
-        There is no possibility to translate this word as no connected articles matching to your input were identified.
+        There is no possibility toLanguage translate this word as no connected articles matching toLanguage your input were identified.
     </div>
     <div class="text-info" ng-hide="sensdu.state != 'initiated' &&
          sensdu.state != 'ambiguousArticle' &&

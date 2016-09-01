@@ -1,113 +1,115 @@
 package com.sensdu.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
-
 /**
- * A table query that stores queries, date of request and result.
+ * A table sourceWord that stores queries, date of request, userAget info and results.
  */
 @Entity
-@Table(name = "query")
+@Table(name = "user_query")
 public class Query implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @Column(name = "date", nullable = false)
-    private Date date;
+//    @Nullable
+//    @Column(name = "date")
+//    private LocalDate date;
 
-    @NotNull
-    @Column(name = "from", nullable = false)
-    private String from;
+    @Column(name = "user_agent")
+    private String userAgent;
 
-    @NotNull
-    @Column(name = "to", nullable = false)
-    private String to;
+    @Column(name = "from_language")
+    private String fromLanguage;
 
-    public void setFrom(String from) {
-        this.from = from;
-    }
+    @Column(name = "to_language")
+    private String toLanguage;
 
-    public void setTo(String to) {
-        this.to = to;
-    }
+    @Column(name = "source_word")
+    private String sourceWord;
 
-    public String getFrom() {
-        return from;
-    }
+    @Column(name = "source_word_wiki_url")
+    private String sourceWordWikiUrl;
 
-    public String getTo() {
-        return to;
-    }
+    @Column(name = "translated_word")
+    private String translatedWord;
 
-    @NotNull
-    @Column(name = "query", nullable = false)
-    private String query;
-
-    @NotNull
-    @Column(name = "query_wiki_url", nullable = false)
-    private String queryWikiURL;
-
-    @NotNull
-    @Column(name = "translation", nullable = false)
-    private String translation;
-
-    @NotNull
-    @Column(name = "translation_wiki_url", nullable = false)
-    private String translationWikiURL;
+    @Column(name = "translated_word_wiki_url")
+    private String translatedWordWikiUrl;
 
     public Long getId() {
         return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getQuery() {
-        return query;
-    }
-
-    public String getQueryWikiURL() {
-        return queryWikiURL;
-    }
-
-    public String getTranslation() {
-        return translation;
-    }
-
-    public String getTranslationWikiURL() {
-        return translationWikiURL;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+//    public LocalDate getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(LocalDate date) {
+//        this.date = date;
+//    }
+
+    public String getUserAgent() {
+        return userAgent;
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public void setUserAget(String userAgent) {
+        this.userAgent = userAgent;
     }
 
-    public void setQueryWikiURL(String queryWikiURL) {
-        this.queryWikiURL = queryWikiURL;
+    public String getFromLanguage() {
+        return fromLanguage;
     }
 
-    public void setTranslation(String translation) {
-        this.translation = translation;
+    public void setFromLanguage(String fromLanguage) {
+        this.fromLanguage = fromLanguage;
     }
 
-    public void setTranslationWikiURL(String translationWikiURL) {
-        this.translationWikiURL = translationWikiURL;
+    public String getToLanguage() {
+        return toLanguage;
+    }
+
+    public void setToLanguage(String toLanguage) {
+        this.toLanguage = toLanguage;
+    }
+
+    public String getSourceWord() {
+        return sourceWord;
+    }
+
+    public void setSourceWord(String sourceWord) {
+        this.sourceWord = sourceWord;
+    }
+
+    public String getSourceWordWikiUrl() {
+        return sourceWordWikiUrl;
+    }
+
+    public void setSourceWordWikiUrl(String sourceWordWikiUrl) {
+        this.sourceWordWikiUrl = sourceWordWikiUrl;
+    }
+
+    public String getTranslatedWord() {
+        return translatedWord;
+    }
+
+    public void setTranslatedWord(String translation) {
+        this.translatedWord = translation;
+    }
+
+    public String getTranslatedWordWikiUrl() {
+        return translatedWordWikiUrl;
+    }
+
+    public void setTranslatedWordWikiUrl(String translationWikiURL) {
+        this.translatedWordWikiUrl = translationWikiURL;
     }
 
     @Override
@@ -119,11 +121,14 @@ public class Query implements Serializable {
     public String toString() {
         return "Query{" +
                 "id=" + id +
-                ", date='" + date + "'" +
-                ", query='" + query + "'" +
-                ", queryWikiURL='" + queryWikiURL + "'" +
-                ", translation='" + translation + "'" +
-                ", translationWikiURL='" + translationWikiURL + "'" +
+//                ", date='" + date + "'" +
+                ", userAgent='" + userAgent + "'" +
+                ", fromLanguage='" + fromLanguage + "'" +
+                ", toLanguage='" + toLanguage + "'" +
+                ", sourceWord='" + sourceWord + "'" +
+                ", sourceWordWikiUrl='" + sourceWordWikiUrl + "'" +
+                ", translatedWord='" + translatedWord + "'" +
+                ", translatedWordWikiUrl='" + translatedWordWikiUrl + "'" +
                 '}';
     }
 }

@@ -125,7 +125,7 @@ task stage {
 
 task copyNodeModules(type: Copy) {
     from 'node_modules'
-    into 'build/resources/main/static/node_modules'
+    into 'build/classes/main/static/node_modules'
 }
 
 assemble.dependsOn copyNodeModules

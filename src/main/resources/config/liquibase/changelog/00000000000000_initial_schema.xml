@@ -17,30 +17,34 @@
 
     <changeSet id="00000000000001" author="stejkem">
 
-        <createTable tableName="query">
+        <createTable tableName="user_query">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date" type="timestamp" defaultValueDate="${now}">
+            <column name="source_word" type="varchar(60)">
                 <constraints nullable="true"/>
             </column>
-            <column name="from" type="varchar(10)">
-                <constraints nullable="false"/>
+            <!--<column name="date" type="timestamp" defaultValueDate="${now}">-->
+                <!--<constraints nullable="true"/>-->
+            <!--</column>-->
+            <column name="user_agent" type="varchar(100)">
+                <constraints nullable="true"/>
             </column>
-            <column name="to" type="varchar(10)">
-                <constraints nullable="false"/>
+
+            <column name="from_language" type="varchar(10)">
+                <constraints nullable="true"/>
             </column>
-            <column name="query" type="varchar(60)">
-                <constraints nullable="false"/>
+            <column name="to_language" type="varchar(10)">
+                <constraints nullable="true"/>
             </column>
-            <column name="query_wiki_url" type="varchar(100)">
-                <constraints nullable="false"/>
+            <column name="source_word_wiki_url" type="varchar(100)">
+                <constraints nullable="true"/>
             </column>
-            <column name="translation" type="varchar(60)">
-                <constraints nullable="false"/>
+            <column name="translated_word" type="varchar(60)">
+                <constraints nullable="true"/>
             </column>
-            <column name="translation_wiki_url" type="varchar(100)">
-                <constraints nullable="false"/>
+            <column name="translated_word_wiki_url" type="varchar(100)">
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>

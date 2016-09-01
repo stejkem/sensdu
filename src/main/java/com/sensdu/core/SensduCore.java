@@ -19,18 +19,18 @@ public class SensduCore {
     private String state;
 
     private final String sourceWord;
+    private String sourceWordWikiUrl;
+
     private final String fromLanguage;
     private final String toLanguage;
 
-    private String sourceWordlURL;
-    private List<String> sourceWordSearchSuggestion;
     private String translatedWord;
-    private String translatedWordURL;
+    private String translatedWordWikiUrl;
 
 
+    private List<String> sourceWordSearchSuggestion;
     private Map<String, WordAndURLTuple> langsAndWords;
-    private String word;
-    private String wordURL;
+
     private Boolean isDisambiguationArticle;
     private List<String> searchSuggestion;
 
@@ -57,8 +57,8 @@ public class SensduCore {
         return sourceWord;
     }
 
-    public String getSourceWordlURL() throws Exception {
-        return  wordURL;
+    public String getSourceWordWikiUrl() throws Exception {
+        return sourceWordWikiUrl;
     }
 
     public String getFromLanguage() {
@@ -73,7 +73,7 @@ public class SensduCore {
         return langsAndWords.get(toLanguage).getWord();
     }
 
-    public String getTranslatedWordURL() throws Exception{
+    public String getTranslatedWordWikiUrl() throws Exception{
         return langsAndWords.get(toLanguage).getURL();
     }
 
@@ -102,11 +102,11 @@ public class SensduCore {
         List<String> wordValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].title");
         List<String> urlValues = JsonPath.read(jsonDocument, "$.query.pages[*].langlinks[*].url");
         List<String> wordURLs = JsonPath.read(jsonDocument, "$.query.pages[*].fullurl");
-        wordURL = wordURLs.get(0);
+        sourceWordWikiUrl = wordURLs.get(0);
 
         // New block on links
         searchSuggestion = new ArrayList<>();
-        Document doc = Jsoup.connect(wordURL).get();
+        Document doc = Jsoup.connect(sourceWordWikiUrl).get();
         Elements links = doc.select("li > a[href], i > a[href]");
         for (Element currentLink : links) {
             if(!currentLink.attr("title").equals("") &&
