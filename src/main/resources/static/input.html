@@ -119,13 +119,13 @@
 
     <div class="text-info" ng-show="sensdu.state != 'initiated' &&
          sensdu.state != 'ambiguousArticle' &&
-         sensdu.sourceWord != null &&
+         sensdu.rememberSourceWord != null &&
          sensdu.translatedWord == null">
         There is no possibility to translate this word as no connected articles matching to your input were identified.
     </div>
     <div class="text-info" ng-hide="sensdu.state != 'initiated' &&
          sensdu.state != 'ambiguousArticle' &&
-         sensdu.sourceWord != null &&
+         sensdu.rememberSourceWord != null &&
          sensdu.translatedWord == null">
         &nbsp
     </div>
