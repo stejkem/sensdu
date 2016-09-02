@@ -9,5 +9,5 @@ Thus, you have your translation and it’s not a word-for-word (or verbatim) but
 Sensdu - sensum de sensu (sense-for-sense) translation powered by Wikipedia. 
 
 You could always try the latest application on:
-http://sensdu-stejkem.rhcloud.com
+http://sensdu.com
 
