@@ -142,5 +142,4 @@ public class SensduCore {
         request.append("&prop=info|links|langlinks|pageprops&formatversion=2&lllimit=500&pllimit=500&llprop=url&inprop=url&format=json");
         return new URL(request.toString());
     }
-
 }

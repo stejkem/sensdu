@@ -51,5 +51,4 @@ public class SensduResource {
         }
         return ResponseEntity.ok(model);
     }
-
 }
