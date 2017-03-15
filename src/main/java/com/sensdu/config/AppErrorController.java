@@ -14,9 +14,8 @@ public class AppErrorController implements ErrorController {
         return PATH;
     }
 
-    @RequestMapping(value=PATH)
+    @RequestMapping(value = PATH)
     public String errorPage() {
         return "404.html";
     }
-
 }
