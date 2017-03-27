@@ -46,7 +46,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
         </dependency>
-
     </dependencies>
 
     <repositories>
@@ -59,5 +58,21 @@
             </snapshots>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>http://repo.spring.io/libs-snapshot</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+  <build>
+      <defaultGoal>spring-boot:run</defaultGoal>
+      <plugins>
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+          </plugin>
+      </plugins>
+  </build>
 
 </project>

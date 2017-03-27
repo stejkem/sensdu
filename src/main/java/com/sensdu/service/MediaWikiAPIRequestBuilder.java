@@ -6,7 +6,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 /**
  * @author Stejkem
  */
-@Service
 public class MediaWikiAPIRequestBuilder {
 
     private final String APIEndpoint;
