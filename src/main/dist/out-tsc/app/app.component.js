@@ -9,10 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LANGUAGES } from "./app.constants";
 export var AppComponent = (function () {
-    function AppComponent(translate) {
-        // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('en');
+    function AppComponent(translateService) {
+        translateService.addLangs(LANGUAGES);
+        translateService.setDefaultLang(LANGUAGES[0]);
     }
     AppComponent = __decorate([
         Component({

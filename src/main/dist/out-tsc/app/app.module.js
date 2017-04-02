@@ -10,11 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { Http, HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+export function HttpLoaderFactory(http) {
+    return new TranslateHttpLoader(http, './i18n/', '.json');
+}
 export var AppModule = (function () {
     function AppModule() {
     }
@@ -29,7 +33,13 @@ export var AppModule = (function () {
                 FormsModule,
                 HttpModule,
                 MaterialModule,
-                TranslateModule.forRoot()
+                TranslateModule.forRoot({
+                    loader: {
+                        provide: TranslateLoader,
+                        useFactory: HttpLoaderFactory,
+                        deps: [Http]
+                    }
+                })
             ],
             providers: [],
             bootstrap: [AppComponent]

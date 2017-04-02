@@ -8,8 +8,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { LANGUAGES } from "../app.constants";
+import { TranslateService } from "@ngx-translate/core";
 export var NavbarComponent = (function () {
-    function NavbarComponent() {
+    function NavbarComponent(translateService) {
+        this.translateService = translateService;
+        this.languages = LANGUAGES;
     }
     NavbarComponent.prototype.ngOnInit = function () {
     };
@@ -19,7 +23,7 @@ export var NavbarComponent = (function () {
             templateUrl: './navbar.component.html',
             styleUrls: ['./navbar.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [TranslateService])
     ], NavbarComponent);
     return NavbarComponent;
 }());

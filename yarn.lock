@@ -82,6 +82,10 @@
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-6.0.1.tgz#7c7a80077feb994fc815b67a72065af04d394efe"
 
+"@ngx-translate/http-loader@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-0.0.3.tgz#8346c8d2d6f630254601029668f17abe2afe8a9b"
+
 "@types/jasmine@2.5.38", "@types/jasmine@^2.5.36":
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"

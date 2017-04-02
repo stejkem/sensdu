@@ -1,13 +1,12 @@
 <md-toolbar color="primary">
-  <a href="/" id="baseUrl" md-button [translate]="'navbar.sensdu'">Sensdu</a>
+  <a href="/" id="baseUrl">{{ 'navbar.sensdu' | translate }}</a>
 
-  <a href="/about" md-button [translate]="'navbar.about'">About</a>
+  <span class="gap-filler"></span>
 
-  <button md-button [mdMenuTriggerFor]="menu">Language</button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item>English</button>
-    <button md-menu-item>German</button>
-    <button md-menu-item>Ukrainian</button>
-    <button md-menu-item>Russian</button>
+  <a href="/about" md-button>{{ 'navbar.about' | translate }}</a>
+
+  <button md-button [mdMenuTriggerFor]="selectLanguage">{{ 'navbar.language' | translate }}</button>
+  <md-menu #selectLanguage="mdMenu">
+    <button md-menu-item *ngFor="let language of languages" (click)="translateService.use(language)">{{ language }}</button>
   </md-menu>
 </md-toolbar>
