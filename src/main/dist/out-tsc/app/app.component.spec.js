@@ -27,4 +27,4 @@ describe('AppComponent', function () {
         expect(compiled.querySelector('h1').textContent).toContain('app works!');
     }));
 });
-//# sourceMappingURL=C:/Projects/sensdu/src/main/webapp/app/app.component.spec.js.map
+//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/app/app.component.spec.js.map

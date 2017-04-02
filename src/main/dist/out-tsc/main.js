@@ -6,4 +6,4 @@ if (environment.production) {
     enableProdMode();
 }
 platformBrowserDynamic().bootstrapModule(AppModule);
-//# sourceMappingURL=C:/Projects/sensdu/src/main/webapp/main.js.map
+//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/main.js.map

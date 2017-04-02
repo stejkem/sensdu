@@ -18,7 +18,8 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "sensdu.theme.scss"
       ],
       "scripts": [],
       "environments": {

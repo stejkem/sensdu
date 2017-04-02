@@ -1,0 +1,13 @@
+<md-toolbar color="primary">
+  <a href="/" id="baseUrl" md-button [translate]="'navbar.sensdu'">Sensdu</a>
+
+  <a href="/about" md-button [translate]="'navbar.about'">About</a>
+
+  <button md-button [mdMenuTriggerFor]="menu">Language</button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item>English</button>
+    <button md-menu-item>German</button>
+    <button md-menu-item>Ukrainian</button>
+    <button md-menu-item>Russian</button>
+  </md-menu>
+</md-toolbar>

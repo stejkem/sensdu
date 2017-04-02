@@ -11,19 +11,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 export var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         NgModule({
             declarations: [
-                AppComponent
+                AppComponent,
+                NavbarComponent
             ],
             imports: [
                 BrowserModule,
                 FormsModule,
-                HttpModule
+                HttpModule,
+                MaterialModule,
+                TranslateModule.forRoot()
             ],
             providers: [],
             bootstrap: [AppComponent]
@@ -32,4 +38,4 @@ export var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=C:/Projects/sensdu/src/main/webapp/app/app.module.js.map
+//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/app/app.module.js.map

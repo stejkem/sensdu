@@ -8,20 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-export var AppComponent = (function () {
-    function AppComponent(translate) {
-        // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('en');
+export var NavbarComponent = (function () {
+    function NavbarComponent() {
     }
-    AppComponent = __decorate([
+    NavbarComponent.prototype.ngOnInit = function () {
+    };
+    NavbarComponent = __decorate([
         Component({
-            selector: 'app-root',
-            templateUrl: './app.component.html',
-            styleUrls: ['./app.component.css']
+            selector: 'app-navbar',
+            templateUrl: './navbar.component.html',
+            styleUrls: ['./navbar.component.css']
         }), 
-        __metadata('design:paramtypes', [TranslateService])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [])
+    ], NavbarComponent);
+    return NavbarComponent;
 }());
-//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/app/app.component.js.map
+//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/app/navbar/navbar.component.js.map

@@ -14,6 +14,7 @@ import 'core-js/es6/set';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
+import 'hammerjs/hammer';
 // If you need to support the browsers/features below, uncomment the import
 // and run `npm install import-name-here';
 // Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
@@ -28,4 +29,4 @@ import 'zone.js/dist/zone';
 // NgClass on SVG elements
 // Needed for: IE10, IE11
 // import 'classlist.js';
-//# sourceMappingURL=C:/Projects/sensdu/src/main/webapp/polyfills.js.map
+//# sourceMappingURL=E:/javaTraining/sensdu/src/main/webapp/polyfills.js.map
