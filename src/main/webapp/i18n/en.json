@@ -3,5 +3,11 @@
       "sensdu":     "Sensdu",
       "about":      "About",
       "language":   "Language"
+    },
+    "input": {
+      "word":       "Enter text"
+    },
+    "output": {
+      "word":       "Translation"
     }
 }
