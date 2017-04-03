@@ -6,6 +6,8 @@ import { MaterialModule } from '@angular/material';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { FindLanguageFromKeyPipe } from './language.pipe';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -16,7 +18,8 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    FindLanguageFromKeyPipe
   ],
   imports: [
     BrowserModule,

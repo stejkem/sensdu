@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/src/main/dist
 /tmp
 /target
 

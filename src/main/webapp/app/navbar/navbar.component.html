@@ -5,8 +5,10 @@
 
   <a href="/about" md-button>{{ 'navbar.about' | translate }}</a>
 
-  <button md-button [mdMenuTriggerFor]="selectLanguage">{{ 'navbar.language' | translate }}</button>
-  <md-menu #selectLanguage="mdMenu">
-    <button md-menu-item *ngFor="let language of languages" (click)="translateService.use(language)">{{ language }}</button>
-  </md-menu>
+    <button md-button [mdMenuTriggerFor]="selectLanguage"><i class="material-icons">language</i> {{ 'navbar.language' | translate }}</button>
+    <md-menu #selectLanguage="mdMenu">
+      <button md-menu-item *ngFor="let language of languages" (click)="translateService.use(language)">{{ language | findLanguageFromKey }}
+      </button>
+    </md-menu>
+
 </md-toolbar>
