@@ -1,0 +1,38 @@
+<div class="container" id="ioContainer"
+     fxLayout="row"
+     fxLayoutAlign="space-around center"
+     fxLayoutWrap="wrap">
+
+  <div class="container"
+       fxLayout="column"
+       fxLayoutGap="10%">
+
+    <md-button-toggle-group #fromGroup="mdButtonToggleGroup">
+      <md-button-toggle *ngFor="let language of languages">
+        {{ language }}
+      </md-button-toggle>
+    </md-button-toggle-group>
+
+    <md-input-container>
+      <input mdInput placeholder="{{ 'input.word' | translate }}">
+    </md-input-container>
+
+  </div>
+
+  <div class="container"
+       fxLayout="column"
+       fxLayoutGap="10%">
+
+      <md-button-toggle-group #fromGroup="mdButtonToggleGroup">
+        <md-button-toggle *ngFor="let language of languages">
+          {{ language }}
+        </md-button-toggle>
+      </md-button-toggle-group>
+
+      <md-input-container>
+        <input mdInput placeholder="{{ 'output.word' | translate }}">
+      </md-input-container>
+
+  </div>
+
+</div>

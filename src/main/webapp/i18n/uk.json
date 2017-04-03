@@ -3,5 +3,11 @@
       "sensdu":     "Sensdu",
       "about":      "Про проект",
       "language":   "Мова"
+    },
+    "input": {
+      "word":       "Введіть текст"
+    },
+    "output": {
+      "word":       "Переклад"
     }
 }
