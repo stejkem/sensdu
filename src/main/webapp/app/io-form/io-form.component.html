@@ -16,7 +16,7 @@
       </md-button-toggle-group>
 
       <md-input-container>
-        <input mdInput placeholder="{{ 'input.word' | translate }}" name="inputWord" ngModel>
+        <input mdInput placeholder="{{ 'input.word' | translate }}" name="word" ngModel>
       </md-input-container>
 
     </div>
@@ -32,7 +32,7 @@
       </md-button-toggle-group>
 
       <md-input-container>
-        <input mdInput placeholder="{{ 'output.word' | translate }}" disabled>
+        <input mdInput placeholder="{{ 'output.word' | translate }}" name="translationWord" [(ngModel)]="data[translation]">
       </md-input-container>
 
     </div>

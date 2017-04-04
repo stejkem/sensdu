@@ -15,6 +15,9 @@ export class IoFormComponent implements OnInit {
 
   constructor(private http: Http) {
     this.languages = LANGUAGES;
+    this.data = JSON.stringify({
+      "translation": ""
+    });
   }
 
   onSubmit(form: any): void {
@@ -24,7 +27,7 @@ export class IoFormComponent implements OnInit {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.post("http://localhost:8080/api/translate", JSON.stringify(form), options)
+    this.http.post("/api/translate", JSON.stringify(form), options)
       .subscribe((response: Response) => {
         this.data = response.json();
         this.loading = false;
