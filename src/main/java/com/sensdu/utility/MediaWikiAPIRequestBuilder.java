@@ -1,6 +1,5 @@
-package com.sensdu.service;
+package com.sensdu.utility;
 
-import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
@@ -8,13 +7,12 @@ import org.springframework.web.util.UriComponentsBuilder;
  */
 public class MediaWikiAPIRequestBuilder {
 
-    private final String APIEndpoint;
-
-    public MediaWikiAPIRequestBuilder(String baseLanguage) {
-        APIEndpoint = String.format("https://%1$s.wikipedia.org/w/api.php", baseLanguage);
+    private MediaWikiAPIRequestBuilder() {
     }
 
-    public String buildTranslationRequestURI(String requestedWord) {
+    public static String buildTranslationRequestURI(String requestedWord, String baseLanguage) {
+        String APIEndpoint = String.format("https://%1$s.wikipedia.org/w/api.php", baseLanguage);
+
         String requestURI = UriComponentsBuilder.fromUriString(APIEndpoint)
                 .queryParam("action", "query")
                 .queryParam("titles", requestedWord)

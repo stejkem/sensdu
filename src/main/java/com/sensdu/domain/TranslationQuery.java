@@ -34,4 +34,13 @@ public class TranslationQuery {
     public void setToLanguage(String toLanguage) {
         this.toLanguage = toLanguage;
     }
+
+    @Override
+    public String toString() {
+        return "TranslationQuery{" +
+            "word='" + word + '\'' +
+            ", fromLanguage='" + fromLanguage + '\'' +
+            ", toLanguage='" + toLanguage + '\'' +
+            '}';
+    }
 }

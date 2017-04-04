@@ -1,4 +1,4 @@
-package com.sensdu.service;
+package com.sensdu.utility;
 
 import java.io.IOException;
 

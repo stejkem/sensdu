@@ -1,4 +1,4 @@
-package com.sensdu.service;
+package com.sensdu.utility;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,12 +17,9 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(classes = AppConfig.class)
 public class MediaWikiAPIRequestBuilderTest {
 
-    @Autowired
-    private MediaWikiAPIRequestBuilder mediaWikiEnglishAPI;
-
     @Test
     public void buildTranslationRequestURITest() throws Exception {
         String actualURL = "https://en.wikipedia.org/w/api.php?action=query&titles=Big Bang&redirects&prop=langlinks|info&formatversion=2&lllimit=500&llprop=url&inprop=url&format=json";
-        assertEquals(actualURL, mediaWikiEnglishAPI.buildTranslationRequestURI("Big Bang"));
+        assertEquals(actualURL, MediaWikiAPIRequestBuilder.buildTranslationRequestURI("Big Bang", "en"));
     }
 }
