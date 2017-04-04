@@ -4,8 +4,15 @@
       "about":      "About",
       "language":   "Language"
     },
+    "languages": {
+      "de":         "German",
+      "en":         "English",
+      "ru":         "Russian",
+      "uk":         "Ukrainian"
+    },
     "input": {
-      "word":       "Enter text"
+      "word":       "Enter text",
+      "translate":  "Translate"
     },
     "output": {
       "word":       "Translation"

@@ -4,8 +4,15 @@
       "about":      "Über",
       "language":   "Sprache"
     },
+    "languages": {
+      "de":         "Deutsch",
+      "en":         "Englisch",
+      "ru":         "Russisch",
+      "uk":         "Ukrainisch"
+    },
     "input": {
-      "word":       "Text eingeben"
+      "word":       "Text eingeben",
+      "translate":  "Übersetzen"
     },
     "output": {
       "word":       "Übersetzung"

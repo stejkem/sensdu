@@ -1,38 +1,49 @@
-<div class="container" id="ioContainer"
-     fxLayout="row"
-     fxLayoutAlign="space-around center"
-     fxLayoutWrap="wrap">
+<form #ioForm="ngForm" (ngSubmit)="onSubmit(ioForm.value)">
 
-  <div class="container"
-       fxLayout="column"
-       fxLayoutGap="10%">
+  <div class="container" id="ioContainer"
+       fxLayout="row"
+       fxLayoutAlign="space-around center"
+       fxLayoutWrap="wrap">
 
-    <md-button-toggle-group #fromGroup="mdButtonToggleGroup">
-      <md-button-toggle *ngFor="let language of languages">
-        {{ language }}
-      </md-button-toggle>
-    </md-button-toggle-group>
+    <div class="container"
+         fxLayout="column"
+         fxLayoutGap="10%">
 
-    <md-input-container>
-      <input mdInput placeholder="{{ 'input.word' | translate }}">
-    </md-input-container>
-
-  </div>
-
-  <div class="container"
-       fxLayout="column"
-       fxLayoutGap="10%">
-
-      <md-button-toggle-group #fromGroup="mdButtonToggleGroup">
-        <md-button-toggle *ngFor="let language of languages">
-          {{ language }}
+      <md-button-toggle-group #fromLanguageToggleGroup="mdButtonToggleGroup" name="fromLanguage" ngModel="{{ languages[0] }}">
+        <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
+          {{ 'languages.' + language | translate }}
         </md-button-toggle>
       </md-button-toggle-group>
 
       <md-input-container>
-        <input mdInput placeholder="{{ 'output.word' | translate }}">
+        <input mdInput placeholder="{{ 'input.word' | translate }}" name="inputWord" ngModel>
       </md-input-container>
 
-  </div>
+    </div>
 
-</div>
+    <div class="container"
+         fxLayout="column"
+         fxLayoutGap="10%">
+
+      <md-button-toggle-group #toLanguageToggleGroup="mdButtonToggleGroup" name="toLanguage" ngModel="{{ languages[1] }}">
+        <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
+          {{ 'languages.' + language | translate }}
+        </md-button-toggle>
+      </md-button-toggle-group>
+
+      <md-input-container>
+        <input mdInput placeholder="{{ 'output.word' | translate }}" disabled>
+      </md-input-container>
+
+    </div>
+
+  </div>
+  <div class="container"
+       fxLayout="row"
+       fxLayoutAlign="space-around center"
+       fxLayoutWrap="wrap">
+
+    <button md-raised-button type="submit" color="primary">{{ 'input.translate' | translate }}</button>
+
+  </div>
+</form>

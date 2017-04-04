@@ -13,6 +13,10 @@ export class IoFormComponent implements OnInit {
     this.languages = LANGUAGES;
   }
 
+  onSubmit(form: any): void {
+    console.log('The value you\'ve submitted:', form);
+  }
+
   ngOnInit() {
   }
 
