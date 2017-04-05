@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LANGUAGES } from "../app.constants";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import {TranslationResponse} from "../data/TranslationResponse";
 
 @Component({
   selector: 'app-io-form',
@@ -11,25 +12,23 @@ export class IoFormComponent implements OnInit {
   private languages: string[];
 
   private loading: boolean;
-  private data: Object;
+  private data: TranslationResponse;
 
   constructor(private http: Http) {
     this.languages = LANGUAGES;
-    this.data = JSON.stringify({
-      "translation": ""
-    });
+    this.data = new TranslationResponse();
   }
 
   onSubmit(form: any): void {
-    console.log('The form you\'ve submitted:', form);
     this.loading = true;
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     this.http.post("/api/translate", JSON.stringify(form), options)
-      .subscribe((response: Response) => {
-        this.data = response.json();
+      .map(response => <TranslationResponse>response.json())
+      .subscribe(data => {
+        this.data = data;
         this.loading = false;
       });
   }

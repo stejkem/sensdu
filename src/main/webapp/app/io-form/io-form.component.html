@@ -19,6 +19,14 @@
         <input mdInput placeholder="{{ 'input.word' | translate }}" name="word" ngModel>
       </md-input-container>
 
+      <div *ngIf="!data.wordURL">
+        <br>
+      </div>
+
+      <div *ngIf="data.wordURL">
+        <a href="{{ data.wordURL }}" target="_blank">read more</a>
+      </div>
+
     </div>
 
     <div class="container"
@@ -32,8 +40,16 @@
       </md-button-toggle-group>
 
       <md-input-container>
-        <input mdInput placeholder="{{ 'output.word' | translate }}" name="translationWord" [(ngModel)]="data[translation]">
+        <input mdInput placeholder="{{ 'output.word' | translate }}" name="translationWord" disabled [(ngModel)]="data.translation">
       </md-input-container>
+
+      <div *ngIf="!data.translationURL">
+        <br>
+      </div>
+
+      <div *ngIf="data.translationURL">
+        <a href="{{ data.translationURL }}" target="_blank">read more</a>
+      </div>
 
     </div>
 
