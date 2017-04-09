@@ -45,7 +45,7 @@
       <div *ngIf="!data.translationURL" class="wikiExtract"></div>
 
       <div *ngIf="data.translationURL" class="wikiExtract">
-        <br/>
+        {{ data.translationWikiExtract }}<br/>
         <a href="{{ data.translationURL }}" target="_blank">{{ 'readMore' | translate }}</a>
       </div>
 
