@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * According to the User-Agent policy -
- * <a> https://meta.wikimedia.org/wiki/User-Agent_policy </a>
+ * <a href="https://meta.wikimedia.org/wiki/User-Agent_policy">User agent policy</a>
  * Wikimedia sites require a HTTP User-Agent header for all requests.
  *
  * @author Stejkem
