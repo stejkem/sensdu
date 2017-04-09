@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 
 import com.sensdu.utility.JsoupRequestWrapper;
 import com.sensdu.utility.MediaWikiAPIRequestBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,19 +28,23 @@ public class TranslationService {
     public TranslationResponse retrieveTranslationResponse() {
         String langAndLinksPath = String.format(".query.pages[0].langlinks[?(@.lang == '%1$s')]", translationQuery.getToLanguage());
         String wordURLPath = ".query.pages[0].fullurl";
+        String wordWikiExtractPath = ".query.pages[0].extract";
 
         String translationURI = MediaWikiAPIRequestBuilder.buildTranslationRequestURI(translationQuery.getWord(), translationQuery.getFromLanguage());
         String APIResponse = tryToMakeWebRequest(translationURI);
+
         LinkedHashMap langAndLink = (LinkedHashMap) (((JSONArray) JsonPath.parse(APIResponse).read(langAndLinksPath)).get(0));
         String wordURL = ((JSONArray) JsonPath.parse(APIResponse).read(wordURLPath)).get(0).toString();
+        String wordWikiExtract = ((JSONArray) JsonPath.parse(APIResponse).read(wordWikiExtractPath)).get(0).toString();
 
         TranslationResponse translationResponse = new TranslationResponse();
-        translationResponse.setWord(translationQuery.getWord());
         translationResponse.setFromLanguage(translationQuery.getFromLanguage());
         translationResponse.setToLanguage(translationQuery.getToLanguage());
+        translationResponse.setWord(translationQuery.getWord());
+        translationResponse.setWordURL(wordURL);
+        translationResponse.setWordWikiExtract(StringUtils.substringBefore(wordWikiExtract, ".") + "...");
         translationResponse.setTranslation((String) langAndLink.get("title"));
         translationResponse.setTranslationURL((String) langAndLink.get("url"));
-        translationResponse.setWordURL(wordURL);
 
         return translationResponse;
     }

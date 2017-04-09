@@ -19,11 +19,10 @@
         <input mdInput placeholder="{{ 'input.word' | translate }}" name="word" ngModel>
       </md-input-container>
 
-      <div *ngIf="!data.wordURL">
-        <br>
-      </div>
+      <div *ngIf="!(data.wordWikiExtract && data.wordURL)" class="wikiExtract"></div>
 
-      <div *ngIf="data.wordURL">
+      <div *ngIf="data.wordWikiExtract && data.wordURL" class="wikiExtract">
+        {{ data.wordWikiExtract }}<br/>
         <a href="{{ data.wordURL }}" target="_blank">{{ 'readMore' | translate }}</a>
       </div>
 
@@ -43,11 +42,10 @@
         <input mdInput placeholder="{{ 'output.word' | translate }}" name="translationWord" disabled [(ngModel)]="data.translation">
       </md-input-container>
 
-      <div *ngIf="!data.translationURL">
-        <br>
-      </div>
+      <div *ngIf="!data.translationURL" class="wikiExtract"></div>
 
-      <div *ngIf="data.translationURL">
+      <div *ngIf="data.translationURL" class="wikiExtract">
+        <br/>
         <a href="{{ data.translationURL }}" target="_blank">{{ 'readMore' | translate }}</a>
       </div>
 

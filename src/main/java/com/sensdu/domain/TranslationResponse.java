@@ -5,17 +5,21 @@ package com.sensdu.domain;
  */
 public class TranslationResponse {
 
-    private String word;
-
     private String fromLanguage;
 
     private String toLanguage;
 
-    private String translation;
+    private String word;
 
     private String wordURL;
 
+    private String wordWikiExtract;
+
+    private String translation;
+
     private String translationURL;
+
+    private String translationWikiExtract;
 
     public String getWord() {
         return word;
@@ -63,5 +67,21 @@ public class TranslationResponse {
 
     public void setTranslationURL(String translationURL) {
         this.translationURL = translationURL;
+    }
+
+    public String getWordWikiExtract() {
+      return wordWikiExtract;
+    }
+
+    public void setWordWikiExtract(String wordWikiExtract) {
+      this.wordWikiExtract = wordWikiExtract;
+    }
+
+    public String getTranslationWikiExtract() {
+      return translationWikiExtract;
+    }
+
+    public void setTranslationWikiExtract(String translationWikiExtract) {
+      this.translationWikiExtract = translationWikiExtract;
     }
 }

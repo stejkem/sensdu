@@ -17,11 +17,13 @@ public class MediaWikiAPIRequestBuilder {
                 .queryParam("action", "query")
                 .queryParam("titles", requestedWord)
                 .queryParam("redirects")
-                .queryParam("prop", "langlinks|info")
+                .queryParam("prop", "langlinks|info|extracts")
                 .queryParam("formatversion", "2")
                 .queryParam("lllimit", "500")
                 .queryParam("llprop", "url")
                 .queryParam("inprop", "url")
+                .queryParam("exintro", "")
+                .queryParam("explaintext", "")
                 .queryParam("format", "json")
                 .build(false).toUriString();
 
