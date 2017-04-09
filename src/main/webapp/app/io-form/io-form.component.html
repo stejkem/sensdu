@@ -1,63 +1,70 @@
 <form #ioForm="ngForm" (ngSubmit)="onSubmit(ioForm.value)">
 
-  <div class="container" id="ioContainer"
-       fxLayout="row"
-       fxLayoutAlign="space-around center"
-       fxLayoutWrap="wrap">
+    <div class="container" id="ioContainer"
+         fxLayout="row"
+         fxLayoutAlign="space-around center"
+         fxLayoutWrap="wrap">
 
-    <div class="container"
-         fxLayout="column"
-         fxLayoutGap="10%">
+        <div class="container"
+             fxLayout="column"
+             fxLayoutGap="10%">
 
-      <md-button-toggle-group #fromLanguageToggleGroup="mdButtonToggleGroup" name="fromLanguage" ngModel="{{ languages[0] }}">
-        <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
-          {{ 'languages.' + language | translate }}
-        </md-button-toggle>
-      </md-button-toggle-group>
+            <md-button-toggle-group #fromLanguageToggleGroup="mdButtonToggleGroup"
+                                    name="fromLanguage"
+                                    ngModel="{{ languages[0] }}">
+                <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
+                    {{ 'languages.' + language | translate }}
+                </md-button-toggle>
+            </md-button-toggle-group>
 
-      <md-input-container>
-        <input mdInput placeholder="{{ 'input.word' | translate }}" name="word" ngModel>
-      </md-input-container>
+            <md-input-container>
+                <input mdInput placeholder="{{ 'input.word' | translate }}" name="word" ngModel>
+            </md-input-container>
 
-      <div *ngIf="!(data.wordWikiExtract && data.wordURL)" class="wikiExtract"></div>
+            <div *ngIf="!(data.wordWikiExtract && data.wordURL)" class="wikiExtract"></div>
 
-      <div *ngIf="data.wordWikiExtract && data.wordURL" class="wikiExtract">
-        {{ data.wordWikiExtract }}<br/>
-        <a href="{{ data.wordURL }}" target="_blank">{{ 'readMore' | translate }}</a>
-      </div>
+            <div *ngIf="data.wordWikiExtract && data.wordURL" class="wikiExtract">
+                {{ data.wordWikiExtract }}<br/>
+                <a href="{{ data.wordURL }}" target="_blank">{{ 'readMore' | translate }}</a>
+            </div>
+
+        </div>
+
+        <div class="container"
+             fxLayout="column"
+             fxLayoutGap="10%">
+
+            <md-button-toggle-group #toLanguageToggleGroup="mdButtonToggleGroup"
+                                    name="toLanguage"
+                                    ngModel="{{ languages[1] }}">
+                <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
+                    {{ 'languages.' + language | translate }}
+                </md-button-toggle>
+            </md-button-toggle-group>
+
+            <md-input-container>
+                <input mdInput placeholder="{{ 'output.word' | translate }}"
+                       name="translationWord"
+                       [(ngModel)]="data.translation"
+                       disabled>
+            </md-input-container>
+
+            <div *ngIf="!data.translationURL" class="wikiExtract"></div>
+
+            <div *ngIf="data.translationURL" class="wikiExtract">
+                {{ data.translationWikiExtract }}<br/>
+                <a href="{{ data.translationURL }}" target="_blank">{{ 'readMore' | translate }}</a>
+            </div>
+
+        </div>
 
     </div>
-
     <div class="container"
-         fxLayout="column"
-         fxLayoutGap="10%">
+         fxLayout="row"
+         fxLayoutAlign="space-around center"
+         fxLayoutWrap="wrap">
 
-      <md-button-toggle-group #toLanguageToggleGroup="mdButtonToggleGroup" name="toLanguage" ngModel="{{ languages[1] }}">
-        <md-button-toggle *ngFor="let language of languages" value="{{ language }}">
-          {{ 'languages.' + language | translate }}
-        </md-button-toggle>
-      </md-button-toggle-group>
-
-      <md-input-container>
-        <input mdInput placeholder="{{ 'output.word' | translate }}" name="translationWord" disabled [(ngModel)]="data.translation">
-      </md-input-container>
-
-      <div *ngIf="!data.translationURL" class="wikiExtract"></div>
-
-      <div *ngIf="data.translationURL" class="wikiExtract">
-        {{ data.translationWikiExtract }}<br/>
-        <a href="{{ data.translationURL }}" target="_blank">{{ 'readMore' | translate }}</a>
-      </div>
+        <button md-raised-button type="submit" color="primary">{{ 'input.translate' | translate }}</button>
 
     </div>
-
-  </div>
-  <div class="container"
-       fxLayout="row"
-       fxLayoutAlign="space-around center"
-       fxLayoutWrap="wrap">
-
-    <button md-raised-button type="submit" color="primary">{{ 'input.translate' | translate }}</button>
-
-  </div>
 </form>
