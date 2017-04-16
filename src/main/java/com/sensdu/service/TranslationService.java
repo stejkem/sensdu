@@ -45,21 +45,29 @@ public class TranslationService {
         String translationURI = MediaWikiAPIRequestBuilder.buildTranslationRequestURI(translationQuery.getWord(), translationQuery.getFromLanguage());
         String APIResponse = JsoupRequestWrapper.tryToRetrieveJson(translationURI);
 
-        LinkedHashMap langAndLink = (LinkedHashMap) (((JSONArray) JsonPath.parse(APIResponse).read(langAndLinksPath)).get(0));
-        String translation = langAndLink.get("title").toString();
-        String translationUrl = langAndLink.get("url").toString();
-
         String wordURL = ((JSONArray) JsonPath.parse(APIResponse).read(wordURLPath)).get(0).toString();
+        String wordExtract = getExtract(wordURL);
+
+        String translation = "no-translation-available";
+        String translationUrl = "";
+        String translationExtract = "";
+
+        if (!((JSONArray) JsonPath.parse(APIResponse).read(langAndLinksPath)).isEmpty()) {
+            LinkedHashMap langAndLink = (LinkedHashMap) (((JSONArray) JsonPath.parse(APIResponse).read(langAndLinksPath)).get(0));
+            translation = langAndLink.get("title").toString();
+            translationUrl = langAndLink.get("url").toString();
+            translationExtract = getExtract(translationUrl);
+        }
 
         TranslationResponse translationResponse = new TranslationResponse();
         translationResponse.setFromLanguage(translationQuery.getFromLanguage());
         translationResponse.setToLanguage(translationQuery.getToLanguage());
         translationResponse.setWord(translationQuery.getWord());
         translationResponse.setWordURL(wordURL);
-        translationResponse.setWordWikiExtract(getExtract(wordURL));
+        translationResponse.setWordWikiExtract(wordExtract);
         translationResponse.setTranslation(translation);
         translationResponse.setTranslationURL(translationUrl);
-        translationResponse.setTranslationWikiExtract(getExtract(translationUrl));
+        translationResponse.setTranslationWikiExtract(translationExtract);
 
         return translationResponse;
     }
