@@ -1,9 +1,12 @@
 package com.sensdu.service;
 
 import java.util.LinkedHashMap;
+import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -62,20 +65,38 @@ public class TranslationService {
     }
 
     private String getExtract(String url) {
-        int cropPoint = 120;
+        int cropPoint = 140;
+        final int minLength = 30;
 
         Document document = JsoupRequestWrapper.tryToRetrieveDocument(url);
-        for (Element element : document.select("#mw-content-text > p")) {
-            String paragraph = element.text();
+        Elements elements = document.select("#mw-content-text > p");
+        Optional<Element> optionalElement = elements.stream().filter(element -> element.text().length() > minLength).findFirst();
 
-            if (paragraph.length() >= cropPoint) {
-                String extract = paragraph.substring(0, paragraph.indexOf(" ", cropPoint)) + "...";
+        if (optionalElement.isPresent()) {
+            String paragraph = optionalElement.get().text();
+            int nextSpaceIndex = paragraph.indexOf(" ", cropPoint);
 
-                return replaceAllIndexPointers(extract);
+            String extract;
+            if (paragraph.length() > cropPoint && nextSpaceIndex != -1) {
+                extract = paragraph.substring(0, nextSpaceIndex);
+            } else {
+                extract = paragraph;
             }
-        }
 
-        return "...";
+            for (int i = extract.length() - 1; i > 0; i--) {
+                if (Character.isLetter(extract.charAt(i))) {
+                    break;
+                } else {
+                    extract = StringUtils.chop(extract);
+                }
+            }
+
+            extract += "...";
+
+            return replaceAllIndexPointers(extract);
+        } else {
+            return "...";
+        }
     }
 
     private String replaceAllIndexPointers(String string) {
