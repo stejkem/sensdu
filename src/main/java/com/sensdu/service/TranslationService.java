@@ -3,6 +3,7 @@ package com.sensdu.service;
 import java.util.LinkedHashMap;
 
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -52,34 +53,29 @@ public class TranslationService {
         translationResponse.setToLanguage(translationQuery.getToLanguage());
         translationResponse.setWord(translationQuery.getWord());
         translationResponse.setWordURL(wordURL);
-        translationResponse.setWordWikiExtract(extractFirsSentenceFromArticle(wordURL));
+        translationResponse.setWordWikiExtract(getExtract(wordURL));
         translationResponse.setTranslation(translation);
         translationResponse.setTranslationURL(translationUrl);
-        translationResponse.setTranslationWikiExtract(extractFirsSentenceFromArticle(translationUrl));
+        translationResponse.setTranslationWikiExtract(getExtract(translationUrl));
 
         return translationResponse;
     }
 
-    private String extractFirsSentenceFromArticle(String url) {
-        String firstParagraph = extractFirstParagraphFromArticle(url);
+    private String getExtract(String url) {
+        int cropPoint = 120;
 
-        int endOfSentence;
-        for (endOfSentence = Math.min(120, firstParagraph.length()); endOfSentence < firstParagraph.length(); endOfSentence++) {
-            if (Character.isUpperCase(firstParagraph.charAt(endOfSentence))
-                    && firstParagraph.charAt(endOfSentence - 1) == ' '
-                    && firstParagraph.charAt(endOfSentence - 2) == '.') {
-                endOfSentence -= 2;
-                break;
+        Document document = JsoupRequestWrapper.tryToRetrieveDocument(url);
+        for (Element element : document.select("#mw-content-text > p")) {
+            String paragraph = element.text();
+
+            if (paragraph.length() >= cropPoint) {
+                String extract = paragraph.substring(0, paragraph.indexOf(" ", cropPoint)) + "...";
+
+                return replaceAllIndexPointers(extract);
             }
         }
 
-        return replaceAllIndexPointers(firstParagraph.substring(0, endOfSentence) + "...");
-    }
-
-    private String extractFirstParagraphFromArticle(String url) {
-        Document document = JsoupRequestWrapper.tryToRetrieveDocument(url);
-
-        return document.select("#mw-content-text > p").get(0).text();
+        return "...";
     }
 
     private String replaceAllIndexPointers(String string) {
