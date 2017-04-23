@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LANGUAGES} from "../app.constants";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import {TranslationResponse} from "../data/TranslationResponse";
 
 @Component({
@@ -14,12 +14,9 @@ export class IoFormComponent implements OnInit {
     private loading: boolean;
     private data: TranslationResponse;
 
-    private noTranslationAvailableMessage: string;
-
     constructor(private http: Http) {
         this.languages = LANGUAGES;
         this.data = new TranslationResponse();
-        this.noTranslationAvailableMessage = "no-translation-available";
     }
 
     onSubmit(form: any): void {
@@ -31,13 +28,13 @@ export class IoFormComponent implements OnInit {
         this.http.post("/api/translate", JSON.stringify(form), options)
             .map(response => <TranslationResponse>response.json())
             .subscribe(data => {
-                this.data = data;
-                this.loading = false;
-
-                if (data.translation === this.noTranslationAvailableMessage) {
-                    
-                }
-            });
+                    this.data = data;
+                    this.loading = false;
+                },
+                error => {
+                    this.data = new TranslationResponse();
+                    this.data.translation = "no-translation-available";
+                });
     }
 
     ngOnInit() {
