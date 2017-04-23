@@ -18,5 +18,10 @@
       "word":               "Translation",
       "oneOffTranslation":  "Not available"
     },
-    "readMore":             "read more"
+    "readMore":             "read more",
+    "about": {
+      "title":              "Sensdu - sensum de sensu (sense-for-sense) translation powered by Wikipedia",
+      "text":               "The project’s name is Sensdu that is shortcut for Latin phrase “sensum de sensu” (sense-for-sense). It translates words using Wikipedia page headers based on idea that the articles are written in different languagesand they are connected between themselves.",
+      "followUp":           "Follow up the project on GitHub"
+    }
 }

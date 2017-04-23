@@ -12,17 +12,25 @@ import {FindLanguageFromKeyPipe} from './language.pipe';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {IoFormComponent} from './io-form/io-form.component';
+import {AboutComponent} from './about/about.component';
+import {RouterModule, Routes} from "@angular/router";
 
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http, './i18n/', '.json');
 }
+
+const routes: Routes = [
+    {path: '', component: IoFormComponent},
+    {path: 'about', component: AboutComponent},
+];
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         FindLanguageFromKeyPipe,
-        IoFormComponent
+        IoFormComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,
@@ -31,6 +39,7 @@ export function HttpLoaderFactory(http: Http) {
         HttpModule,
         MaterialModule,
         FlexLayoutModule,
+        RouterModule.forRoot(routes),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -18,5 +18,10 @@
       "word":               "Übersetzung",
       "oneOffTranslation":  "Nicht verfügbar"
     },
-    "readMore":             "weiterlesen"
+    "readMore":             "weiterlesen",
+    "about": {
+      "title":              "Sensdu - sensum de sensu (Sinn für Sinn) Übersetzung unterstützt von Wikipedia",
+      "text":               "",
+      "followUp":           "Verfolgen Sie das Projekt auf GitHub"
+    }
 }

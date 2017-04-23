@@ -18,5 +18,10 @@
       "word":               "Перевод",
       "oneOffTranslation":  "Отсутствует"
     },
-    "readMore":             "детальнее"
+    "readMore":             "детальнее",
+    "about": {
+      "title":              "Sensdu - sensum de sensu (литературный перевод) перевод на основе Wikipedia",
+      "text":               "",
+      "followUp":           "Следите за проектом на GitHub"
+    }
 }

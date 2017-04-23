@@ -1,8 +1,8 @@
 #baseUrl {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 .gap-filler {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }

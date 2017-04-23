@@ -18,5 +18,10 @@
       "word":               "Переклад",
       "oneOffTranslation":  "Відсутній"
     },
-    "readMore":             "детальніше"
+    "readMore":             "детальніше",
+    "about": {
+      "title":              "Sensdu - sensum de sensu (адекватний) переклад на основе Wikipedia",
+      "text":               "",
+      "followUp":           "Слідкуйте за проектом на GitHub"
+    }
 }
