@@ -1,38 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { LANGUAGES } from "../app.constants";
-import { Http, Response, Headers, RequestOptions } from "@angular/http";
+import {Component, OnInit} from '@angular/core';
+import {LANGUAGES} from "../app.constants";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {TranslationResponse} from "../data/TranslationResponse";
 
 @Component({
-  selector: 'app-io-form',
-  templateUrl: './io-form.component.html',
-  styleUrls: ['./io-form.component.css']
+    selector: 'app-io-form',
+    templateUrl: './io-form.component.html',
+    styleUrls: ['./io-form.component.css']
 })
 export class IoFormComponent implements OnInit {
-  private languages: string[];
+    private languages: string[];
 
-  private loading: boolean;
-  private data: TranslationResponse;
+    private loading: boolean;
+    private data: TranslationResponse;
 
-  constructor(private http: Http) {
-    this.languages = LANGUAGES;
-    this.data = new TranslationResponse();
-  }
+    private noTranslationAvailableMessage: string;
 
-  onSubmit(form: any): void {
-    this.loading = true;
+    constructor(private http: Http) {
+        this.languages = LANGUAGES;
+        this.data = new TranslationResponse();
+        this.noTranslationAvailableMessage = "no-translation-available";
+    }
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    onSubmit(form: any): void {
+        this.loading = true;
 
-    this.http.post("/api/translate", JSON.stringify(form), options)
-      .map(response => <TranslationResponse>response.json())
-      .subscribe(data => {
-        this.data = data;
-        this.loading = false;
-      });
-  }
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
 
-  ngOnInit() {
-  }
+        this.http.post("/api/translate", JSON.stringify(form), options)
+            .map(response => <TranslationResponse>response.json())
+            .subscribe(data => {
+                this.data = data;
+                this.loading = false;
+
+                if (data.translation === this.noTranslationAvailableMessage) {
+                    
+                }
+            });
+    }
+
+    ngOnInit() {
+    }
 }

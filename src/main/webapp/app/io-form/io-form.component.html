@@ -43,9 +43,12 @@
             </md-button-toggle-group>
 
             <md-input-container>
-                <input mdInput placeholder="{{ 'output.word' | translate }}"
+                <input mdInput placeholder="{{ 'output.word' | translate }}" *ngIf="data.translation != 'no-translation-available'"
                        name="translationWord"
                        [(ngModel)]="data.translation"
+                       disabled>
+                <input mdInput placeholder="{{ 'output.word' | translate }}" *ngIf="data.translation === 'no-translation-available'"
+                       value="{{'output.oneOffTranslation' | translate}}"
                        disabled>
             </md-input-container>
 

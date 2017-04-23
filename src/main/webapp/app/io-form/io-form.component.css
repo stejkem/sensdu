@@ -1,9 +1,10 @@
 #ioContainer {
-  min-height: 400px;
+    min-height: 400px;
 }
+
 .wikiExtract {
-  max-width:  400px;
-  min-width:  400px;
-  max-height: 50px;
-  min-height: 50px;
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 50px;
+    min-height: 50px;
 }

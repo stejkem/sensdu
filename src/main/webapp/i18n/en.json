@@ -1,21 +1,22 @@
 {
     "navbar": {
-      "sensdu":     "Sensdu",
-      "about":      "About",
-      "language":   "Language"
+      "sensdu":             "Sensdu",
+      "about":              "About",
+      "language":           "Language"
     },
     "languages": {
-      "de":         "German",
-      "en":         "English",
-      "ru":         "Russian",
-      "uk":         "Ukrainian"
+      "de":                 "German",
+      "en":                 "English",
+      "ru":                 "Russian",
+      "uk":                 "Ukrainian"
     },
     "input": {
-      "word":       "Enter text",
-      "translate":  "Translate"
+      "word":               "Enter text",
+      "translate":          "Translate"
     },
     "output": {
-      "word":       "Translation"
+      "word":               "Translation",
+      "oneOffTranslation":  "Not available"
     },
-    "readMore":     "read more"
+    "readMore":             "read more"
 }
