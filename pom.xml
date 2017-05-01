@@ -14,6 +14,15 @@
         <version>2.0.0.BUILD-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <jsoup.version>1.10.2</jsoup.version>
+        <jsonpath.version>2.2.0</jsonpath.version>
+        <apache-commons-lang.version>3.0</apache-commons-lang.version>
+        <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
+        <node.version>v6.10.0</node.version>
+        <yarn.version>v0.21.3</yarn.version>
+    </properties>
+
     <dependencies>
         <!--Spring related dependencies-->
         <dependency>
@@ -34,17 +43,17 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.10.2</version>
+            <version>${jsoup.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.2.0</version>
+            <version>${jsonpath.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <version>${apache-commons-lang.version}</version>
         </dependency>
     </dependencies>
 
@@ -76,37 +85,23 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.4</version>
-
-                <configuration>
-                    <yarnVersion>v6.10.1</yarnVersion>
-                    <workingDirectory>src/main/frontend</workingDirectory>
-                </configuration>
-
+                <version>${frontend-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>install yarn</id>
+                        <id>install node and yarn</id>
                         <goals>
-                            <goal>install-yarn</goal>
+                            <goal>install-node-and-yarn</goal>
                         </goals>
-                    </execution>
-
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                    </execution>
-
-                    <execution>
-                        <id>npm run build</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-
                         <configuration>
-                            <arguments>run build</arguments>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <yarnVersion>${yarn.version}</yarnVersion>
                         </configuration>
+                    </execution>
+                    <execution>
+                        <id>yarn install</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
