@@ -19,7 +19,7 @@ public class MediaWikiAPIRequestBuilderTest {
 
     @Test
     public void buildTranslationRequestURITest() throws Exception {
-        String actualURL = "https://en.wikipedia.org/w/api.php?action=query&titles=Big Bang&redirects&prop=langlinks|info&formatversion=2&lllimit=500&llprop=url&inprop=url&format=json";
+        String actualURL = "https://en.wikipedia.org/w/api.php?action=query&titles=Big Bang&redirects&prop=langlinks|info|extracts&formatversion=2&lllimit=500&llprop=url&inprop=url&exintro=&explaintext=&format=json";
         assertEquals(actualURL, MediaWikiAPIRequestBuilder.buildTranslationRequestURI("Big Bang", "en"));
     }
 }
