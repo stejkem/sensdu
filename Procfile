@@ -1,1 +1,1 @@
-java -Dserver.port=9084 $JAVA_OPTS -jar build/libs/Sensdu-1.0-SNAPSHOT.war
+java -Dserver.port=9084 $JAVA_OPTS -jar build/libs/*.war
