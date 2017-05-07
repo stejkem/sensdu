@@ -1,1 +1,1 @@
-java -Dserver.port=9084 $JAVA_OPTS -jar build/libs/*.war
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.war
