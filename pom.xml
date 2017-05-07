@@ -104,6 +104,33 @@
                             <goal>yarn</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>yarn build4production</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>build4production</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals><goal>copy-resources</goal></goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/static/</outputDirectory >
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/webapp</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
