@@ -19,18 +19,6 @@ public class TranslationServiceTests {
     private TranslationService translationService;
 
     @Test
-    public void easyTranslationTest() throws Exception {
-        TranslationQuery translationQuery = new TranslationQuery();
-        translationQuery.setFromLanguage("en");
-        translationQuery.setToLanguage("de");
-        translationQuery.setWord("Big Bang");
-
-        translationService.setTranslationQuery(translationQuery);
-
-        assertEquals("Urknall", translationService.retrieveTranslationResponse().getTranslation());
-    }
-
-    @Test
     public void translationWithRedirectTest() throws Exception {
         TranslationQuery translationQuery = new TranslationQuery();
         translationQuery.setFromLanguage("en");
