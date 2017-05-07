@@ -125,12 +125,6 @@
                         <resource>
                             <directory>target/webapp</directory>
                         </resource>
-                        <resource>
-                            <directory>src/main/webapp</directory>
-                            <excludes>
-                                <exclude>*.*</exclude>
-                            </excludes>
-                        </resource>
                     </webResources>
                 </configuration>
             </plugin>
